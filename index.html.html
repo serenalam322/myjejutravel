@@ -1,0 +1,1665 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>濟州首爾自駕隨行 Pocket Guide</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Google Fonts: Noto Sans TC & Zen Maru Gothic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <!-- PWA Meta & Web App Manifest (Data URL for single-file deployment) -->
+  <meta name="theme-color" content="#6E836A">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="濟州首爾隨行">
+  <link rel="apple-touch-icon" href="https://placehold.co/192x192/6E836A/ffffff?text=Jeju+Guide">
+  <link rel="manifest" id="manifest-placeholder">
+
+  <script>
+    // 動態生成 Web App Manifest (維持單一文件檔名與完整性)
+    (function registerDynamicManifest() {
+      const manifestData = {
+        name: "濟州首爾自駕隨行 Pocket Guide",
+        short_name: "濟州首爾隨行",
+        description: "2026 濟州 · 首爾自駕遊隨行離線手冊",
+        start_url: "./",
+        display: "standalone",
+        background_color: "#FBF9F5",
+        theme_color: "#6E836A",
+        icons: [
+          {
+            src: "https://placehold.co/192x192/6E836A/ffffff?text=Jeju+Guide",
+            sizes: "192x192",
+            type: "image/png"
+          },
+          {
+            src: "https://placehold.co/512x512/6E836A/ffffff?text=Jeju+Guide",
+            sizes: "512x512",
+            type: "image/png"
+          }
+        ]
+      };
+      const stringManifest = JSON.stringify(manifestData);
+      const blob = new Blob([stringManifest], { type: 'application/json' });
+      const manifestUrl = URL.createObjectURL(blob);
+      document.getElementById('manifest-placeholder').setAttribute('href', manifestUrl);
+    })();
+  </script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            linen: '#FBF9F5',
+            sand: '#F3EEE7',
+            washi: '#FAF6EE',
+            charcoal: '#2D312E',
+            mutedgray: '#787E7A',
+            matcha: '#6E836A',
+            matchalight: '#EAF0E9',
+            terracotta: '#C87D55',
+            terracottalight: '#FBF0EA',
+            mustard: '#CFA052',
+            mustardlight: '#FBF4E7',
+            slateblue: '#5B7B8D',
+            slatebluelight: '#EDF3F7',
+            softborder: '#E6E0D6'
+          },
+          fontFamily: {
+            sans: ['"Noto Sans TC"', 'sans-serif'],
+            zen: ['"Zen Maru Gothic"', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #FBF9F5;
+      color: #2D312E;
+      font-family: 'Noto Sans TC', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .hide-scrollbar::-webkit-scrollbar { display: none; }
+    .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .tab-active { color: #6E836A; font-weight: 700; }
+    .badge-blur { backdrop-filter: blur(8px); }
+  </style>
+</head>
+<body class="pb-24 max-w-md mx-auto min-h-screen relative shadow-2xl bg-linen border-x border-softborder/40">
+
+  <!-- TOP HEADER & WEATHER BANNER -->
+  <header class="sticky top-0 z-30 bg-washi/90 backdrop-blur-md border-b border-softborder p-4 transition-all">
+    <div class="flex justify-between items-center mb-1">
+      <div class="flex items-center space-x-2">
+        <span class="text-xs font-zen tracking-widest text-matcha uppercase px-2 py-0.5 rounded-full bg-matchalight border border-matcha/20">2026 濟州 · 首爾</span>
+        <h1 class="text-lg font-bold text-charcoal font-zen tracking-wide" id="header-title">濟州自駕遊</h1>
+      </div>
+      <button onclick="switchTab('info')" class="text-xs text-mutedgray hover:text-charcoal flex items-center gap-1 bg-sand px-2.5 py-1 rounded-full border border-softborder">
+        <i class="fa-solid fa-circle-info text-matcha"></i> 資訊
+      </button>
+    </div>
+
+    <!-- Live Weather Pill Card -->
+    <div id="weather-banner" class="bg-gradient-to-r from-matchalight/60 to-sand/80 rounded-2xl p-3 border border-matcha/15 flex justify-between items-center transition-all duration-300">
+      <div class="flex items-center space-x-3">
+        <div id="weather-icon-container" class="text-2xl text-matcha w-8 text-center">
+          <i class="fa-solid fa-sun animate-pulse"></i>
+        </div>
+        <div>
+          <div class="flex items-baseline space-x-1.5">
+            <span id="weather-temp" class="text-xl font-bold font-zen text-charcoal">17°C</span>
+            <span id="weather-desc" class="text-xs text-mutedgray font-medium">晴朗微風</span>
+          </div>
+          <p id="weather-location" class="text-[11px] text-mutedgray/90 flex items-center gap-1">
+            <i class="fa-solid fa-location-dot text-[10px] text-terracotta"></i> 濟州市 Jeju-si
+          </p>
+        </div>
+      </div>
+      <div class="text-right text-[11px] text-mutedgray border-l border-softborder pl-3 space-y-0.5">
+        <div>降雨率 <span id="weather-pop" class="font-medium text-charcoal">10%</span></div>
+        <div>體感 <span id="weather-feels" class="font-medium text-charcoal">16°C</span></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN VIEWPORT CONTENT CONTAINER -->
+  <main class="p-4 space-y-4">
+
+    <!-- TAB 1: ITINERARY (行程) -->
+    <section id="tab-itinerary" class="tab-content space-y-4">
+      
+      <!-- Day Selector Carousel -->
+      <div class="flex space-x-2 overflow-x-auto hide-scrollbar py-1 px-0.5" id="day-pills">
+        <!-- JS injected pills -->
+      </div>
+
+      <!-- Quick Day Summary Header & Add Button -->
+      <div class="flex justify-between items-center px-1 pt-1 border-b border-softborder pb-2">
+        <div>
+          <h2 id="day-title" class="text-base font-bold font-zen text-charcoal flex items-center gap-2">
+            <!-- Day Title JS -->
+          </h2>
+          <span id="day-sub-location" class="inline-block mt-0.5 text-xs text-matcha font-medium bg-matchalight px-2 py-0.5 rounded-md border border-matcha/20">
+            <!-- Location JS -->
+          </span>
+        </div>
+        <button onclick="openAddItineraryModal()" class="text-xs bg-matcha text-white px-3 py-1.5 rounded-full font-medium shadow-sm hover:bg-matcha/90 transition-all flex items-center gap-1">
+          <i class="fa-solid fa-plus"></i> 新增行程
+        </button>
+      </div>
+
+      <!-- Schedule Cards Container -->
+      <div id="cards-container" class="space-y-4">
+        <!-- JS dynamic cards insertion -->
+      </div>
+    </section>
+
+    <!-- TAB 2: TRIP INFO (旅程資訊) -->
+    <section id="tab-info" class="tab-content space-y-5 hidden">
+      <!-- Section Header -->
+      <div class="flex justify-between items-center border-b border-softborder pb-2">
+        <h2 class="text-lg font-bold font-zen text-charcoal flex items-center gap-2">
+          <i class="fa-solid fa-compass text-matcha"></i> 旅程隨身資訊
+        </h2>
+        <span class="text-xs text-mutedgray">點擊可直接編輯內容</span>
+      </div>
+
+      <!-- Accordions / Cards -->
+      <!-- 1. Flights -->
+      <div class="bg-washi border border-softborder rounded-2xl p-4 shadow-sm">
+        <div class="flex justify-between items-center mb-3">
+          <h3 class="font-bold text-sm text-charcoal flex items-center gap-2">
+            <i class="fa-solid fa-plane text-slate-400"></i> 航班資訊 (Flight)
+          </h3>
+          <button onclick="editSection('flight')" class="text-xs text-matcha hover:underline"><i class="fa-solid fa-pen"></i> 編輯</button>
+        </div>
+        <div id="disp-flight" class="space-y-3 text-xs text-charcoal">
+          <!-- Default Flight details -->
+        </div>
+      </div>
+
+      <!-- 2. Car Rental -->
+      <div class="bg-washi border border-softborder rounded-2xl p-4 shadow-sm">
+        <div class="flex justify-between items-center mb-3">
+          <h3 class="font-bold text-sm text-charcoal flex items-center gap-2">
+            <i class="fa-solid fa-car text-matcha"></i> 租車資訊 (Angel Car)
+          </h3>
+          <button onclick="editSection('car')" class="text-xs text-matcha hover:underline"><i class="fa-solid fa-pen"></i> 編輯</button>
+        </div>
+        <div id="disp-car" class="space-y-2 text-xs text-charcoal">
+          <!-- Default Car details -->
+        </div>
+      </div>
+
+      <!-- 3. Accommodations -->
+      <div class="bg-washi border border-softborder rounded-2xl p-4 shadow-sm">
+        <div class="flex justify-between items-center mb-3">
+          <h3 class="font-bold text-sm text-charcoal flex items-center gap-2">
+            <i class="fa-solid fa-hotel text-terracotta"></i> 住宿資訊 (Stay)
+          </h3>
+          <button onclick="editSection('hotel')" class="text-xs text-matcha hover:underline"><i class="fa-solid fa-pen"></i> 編輯</button>
+        </div>
+        <div id="disp-hotel" class="space-y-3 text-xs text-charcoal">
+          <!-- Default Hotel details -->
+        </div>
+      </div>
+
+      <!-- 4. Emergency Contacts -->
+      <div class="bg-washi border border-softborder rounded-2xl p-4 shadow-sm">
+        <div class="flex justify-between items-center mb-3">
+          <h3 class="font-bold text-sm text-charcoal flex items-center gap-2">
+            <i class="fa-solid fa-phone-volume text-red-500"></i> 緊急聯絡電話
+          </h3>
+          <button onclick="editSection('emergency')" class="text-xs text-matcha hover:underline"><i class="fa-solid fa-pen"></i> 編輯</button>
+        </div>
+        <div id="disp-emergency" class="space-y-2 text-xs text-charcoal">
+          <!-- Default Emergency contacts -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: EXPENSE TRACKER (獨立記帳本) -->
+    <section id="tab-expense" class="tab-content space-y-4 hidden">
+      <div class="flex justify-between items-center border-b border-softborder pb-2">
+        <div>
+          <h2 class="text-lg font-bold font-zen text-charcoal flex items-center gap-2">
+            <i class="fa-solid fa-wallet text-mustard"></i> 旅程記帳本
+          </h2>
+          <p class="text-xs text-mutedgray">隨時掌控旅程開銷與即時匯率換算</p>
+        </div>
+        <button onclick="openAddExpenseModal()" class="text-xs bg-matcha text-white px-3.5 py-1.5 rounded-full font-medium shadow-sm hover:bg-matcha/90">
+          <i class="fa-solid fa-plus"></i> 新增筆數
+        </button>
+      </div>
+
+      <!-- Rate Setting Card -->
+      <div class="bg-washi border border-softborder rounded-2xl p-3.5 shadow-sm space-y-2">
+        <div class="flex justify-between items-center">
+          <label class="text-xs font-bold text-charcoal flex items-center gap-1.5">
+            <i class="fa-solid fa-calculator text-matcha"></i> 自訂換算匯率 Setting
+          </label>
+          <span class="text-[10px] text-mutedgray">輸入 1 HKD 等於多少 KRW</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="text-xs font-bold text-charcoal">1 HKD =</span>
+          <input type="number" id="custom-rate-input" onchange="updateExchangeRate()" onkeyup="updateExchangeRate()" class="flex-1 text-xs bg-linen border border-softborder rounded-xl px-3 py-1.5 font-bold font-zen outline-none focus:border-matcha" placeholder="172">
+          <span class="text-xs font-bold text-charcoal">KRW ₩</span>
+        </div>
+      </div>
+
+      <!-- Total Summary Card -->
+      <div class="bg-washi border border-softborder rounded-2xl p-4 shadow-sm space-y-3">
+        <div class="grid grid-cols-2 gap-2 bg-sand/60 p-3 rounded-xl border border-softborder text-center">
+          <div>
+            <div class="text-[10px] text-mutedgray uppercase font-semibold">總支出 (KRW)</div>
+            <div class="text-lg font-bold text-charcoal font-zen" id="total-krw">₩ 0</div>
+          </div>
+          <div class="border-l border-softborder">
+            <div class="text-[10px] text-mutedgray uppercase font-semibold">折合 (HKD)</div>
+            <div class="text-lg font-bold text-terracotta font-zen" id="total-hkd">HK$ 0</div>
+          </div>
+        </div>
+
+        <!-- Expense List -->
+        <div class="space-y-2 max-h-96 overflow-y-auto hide-scrollbar" id="expense-list">
+          <!-- Dynamic expenses -->
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: TO BUY LIST (購物清單) -->
+    <section id="tab-buy" class="tab-content space-y-4 hidden">
+      <div class="flex justify-between items-center border-b border-softborder pb-2">
+        <div>
+          <h2 class="text-lg font-bold font-zen text-charcoal flex items-center gap-2">
+            <i class="fa-solid fa-bag-shopping text-mustard"></i> 必買與願望清單
+          </h2>
+          <p class="text-xs text-mutedgray">濟州限定伴手禮、韓牌服飾與美妝</p>
+        </div>
+        <button onclick="openAddBuyItemModal()" class="text-xs bg-mustard text-white px-3 py-1.5 rounded-full font-medium shadow-sm">
+          <i class="fa-solid fa-plus"></i> 新增項目
+        </button>
+      </div>
+
+      <!-- Quick Add Input Bar -->
+      <div class="flex gap-2 bg-washi p-2 rounded-xl border border-softborder">
+        <input type="text" id="quick-buy-input" placeholder="輸入要買的物品..." class="flex-1 text-xs bg-transparent px-2 py-1 outline-none">
+        <button onclick="quickAddBuyItem()" class="text-xs bg-matcha text-white px-3 py-1 rounded-lg">新增</button>
+      </div>
+
+      <!-- Filter / Category Tabs -->
+      <div class="flex space-x-2 text-xs">
+        <button onclick="filterBuyList('all')" id="buy-filter-all" class="px-3 py-1 rounded-full bg-charcoal text-white font-medium">全部</button>
+        <button onclick="filterBuyList('pending')" id="buy-filter-pending" class="px-3 py-1 rounded-full bg-sand text-mutedgray">未購買</button>
+        <button onclick="filterBuyList('done')" id="buy-filter-done" class="px-3 py-1 rounded-full bg-sand text-mutedgray">已完成</button>
+      </div>
+
+      <!-- List Container -->
+      <div id="tobuy-container" class="space-y-2">
+        <!-- JS rendered items -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- EDIT MODALS CONTAINER -->
+  <!-- 1. Text Info Edit Modal -->
+  <div id="modal-edit-info" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-washi w-full max-w-sm rounded-2xl p-5 border border-softborder shadow-2xl space-y-4">
+      <h3 class="font-bold text-base text-charcoal border-b border-softborder pb-2" id="modal-info-title">編輯資訊</h3>
+      <textarea id="modal-info-textarea" rows="6" class="w-full text-xs p-3 rounded-xl border border-softborder bg-linen outline-none focus:border-matcha font-mono"></textarea>
+      <div class="flex justify-end gap-2 text-xs">
+        <button onclick="closeModal('modal-edit-info')" class="px-4 py-2 rounded-xl bg-sand text-mutedgray font-medium">取消</button>
+        <button onclick="saveInfoEdit()" class="px-4 py-2 rounded-xl bg-matcha text-white font-medium">儲存修改</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Add Expense Modal -->
+  <div id="modal-add-expense" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-washi w-full max-w-sm rounded-2xl p-5 border border-softborder shadow-2xl space-y-3">
+      <h3 class="font-bold text-base text-charcoal border-b border-softborder pb-2">新增記帳項目</h3>
+      <div class="space-y-2 text-xs">
+        <div>
+          <label class="block text-mutedgray mb-1">項目名稱</label>
+          <input type="text" id="exp-name" placeholder="例如: 濟州黑豬肉晚餐" class="w-full p-2.5 rounded-xl border border-softborder bg-linen outline-none">
+        </div>
+        <div>
+          <label class="block text-mutedgray mb-1">金額 (KRW ₩)</label>
+          <input type="number" id="exp-amount" placeholder="例如: 45000" class="w-full p-2.5 rounded-xl border border-softborder bg-linen outline-none">
+        </div>
+        <div>
+          <label class="block text-mutedgray mb-1">分類</label>
+          <select id="exp-cat" class="w-full p-2.5 rounded-xl border border-softborder bg-linen outline-none">
+            <option value="餐飲">🍽️ 餐飲 Dining</option>
+            <option value="購物">🛍️ 購物 Shopping</option>
+            <option value="景點">🎟️ 門票/景點 Ticket</option>
+            <option value="交通">🚗 交通/租車 Transport</option>
+            <option value="住宿">🏠 住宿 Stay</option>
+            <option value="其他">📦 其他 Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="flex justify-end gap-2 text-xs pt-2">
+        <button onclick="closeModal('modal-add-expense')" class="px-4 py-2 rounded-xl bg-sand text-mutedgray font-medium">取消</button>
+        <button onclick="saveExpense()" class="px-4 py-2 rounded-xl bg-matcha text-white font-medium">確認新增</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. Add/Edit Itinerary Modal (新增/編輯行程卡片 Modal - 擴充自訂地圖連結) -->
+  <div id="modal-edit-itinerary" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-washi w-full max-w-sm rounded-2xl p-5 border border-softborder shadow-2xl space-y-3 max-h-[90vh] overflow-y-auto hide-scrollbar">
+      <h3 class="font-bold text-base text-charcoal border-b border-softborder pb-2" id="modal-itin-title">新增/編輯行程</h3>
+      <input type="hidden" id="itin-item-index" value="-1">
+      <div class="space-y-2.5 text-xs">
+        <div class="grid grid-cols-2 gap-2">
+          <div>
+            <label class="block text-mutedgray mb-1 font-medium">卡片類型</label>
+            <select id="itin-type" class="w-full p-2 rounded-xl border border-softborder bg-linen outline-none">
+              <option value="景點">景點</option>
+              <option value="餐廳">餐廳</option>
+              <option value="購物">購物</option>
+              <option value="交通">交通</option>
+              <option value="住宿">住宿</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-mutedgray mb-1 font-medium">標籤顏色</label>
+            <select id="itin-badge-type" class="w-full p-2 rounded-xl border border-softborder bg-linen outline-none">
+              <option value="green">綠色 (景點)</option>
+              <option value="orange">橙色 (餐廳)</option>
+              <option value="gold">黃金色 (購物)</option>
+              <option value="blue">藍色 (交通)</option>
+              <option value="slate">灰色 (住宿)</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="block text-mutedgray mb-1 font-medium">時間範圍</label>
+          <input type="text" id="itin-time" placeholder="例如: 10:00 - 11:30" class="w-full p-2 rounded-xl border border-softborder bg-linen outline-none">
+        </div>
+        <div>
+          <label class="block text-mutedgray mb-1 font-medium">地點/項目名稱 (中文)</label>
+          <input type="text" id="itin-name" placeholder="例如: 君悅酒店汗蒸幕" class="w-full p-2 rounded-xl border border-softborder bg-linen outline-none font-bold">
+        </div>
+        <div>
+          <label class="block text-mutedgray mb-1 font-medium">英文/韓文名稱</label>
+          <input type="text" id="itin-name-enko" placeholder="例如: 그랜드 하얏트 제주 찜질 스파" class="w-full p-2 rounded-xl border border-softborder bg-linen outline-none font-mono">
+        </div>
+        <div>
+          <label class="block text-mutedgray mb-1 font-medium">韓文地址 (導航使用)</label>
+          <input type="text" id="itin-addr-ko" placeholder="例如: 제주특별자치도 제주시 노연로 12 6층" class="w-full p-2 rounded-xl border border-softborder bg-linen outline-none font-mono">
+        </div>
+        <div>
+          <label class="block text-mutedgray mb-1 font-medium">英文地址</label>
+          <input type="text" id="itin-addr-en" placeholder="例如: 6F, 12 Noyeon-ro, Jeju-si" class="w-full p-2 rounded-xl border border-softborder bg-linen outline-none font-mono">
+        </div>
+
+        <!-- 自訂地圖連結擴充欄位 -->
+        <div class="border-t border-b border-softborder py-2 my-1 space-y-2 bg-sand/30 p-2 rounded-xl">
+          <span class="block text-[11px] font-bold text-matcha">🗺️ 地圖導航連結 (可留空選填)：</span>
+          <div>
+            <label class="block text-mutedgray mb-0.5 font-medium text-[10px]">自訂 Google Map URL</label>
+            <input type="url" id="itin-custom-google-url" placeholder="留空將自動由名稱/地址搜尋" class="w-full p-2 rounded-xl border border-softborder bg-linen outline-none text-[11px]">
+          </div>
+          <div>
+            <label class="block text-mutedgray mb-0.5 font-medium text-[10px]">自訂 Naver Map URL</label>
+            <input type="url" id="itin-custom-naver-url" placeholder="留空將自動由名稱/地址搜尋" class="w-full p-2 rounded-xl border border-softborder bg-linen outline-none text-[11px]">
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-mutedgray mb-1 font-medium">營業/開放時間資訊</label>
+          <input type="text" id="itin-hours" placeholder="例如: 07:00 - 00:00" class="w-full p-2 rounded-xl border border-softborder bg-linen outline-none">
+        </div>
+        <div>
+          <label class="block text-mutedgray mb-1 font-medium">重點/亮點提示</label>
+          <input type="text" id="itin-highlight" placeholder="例如: 必吃美食: 海螺刀削麵" class="w-full p-2 rounded-xl border border-softborder bg-linen outline-none">
+        </div>
+        <div>
+          <label class="block text-mutedgray mb-1 font-medium">導遊手札 / 詳細攻略</label>
+          <textarea id="itin-guide" rows="3" placeholder="補充心得、注意事項或交通細節..." class="w-full p-2 rounded-xl border border-softborder bg-linen outline-none leading-relaxed"></textarea>
+        </div>
+      </div>
+      <div class="flex justify-end gap-2 text-xs pt-2 border-t border-softborder">
+        <button onclick="closeModal('modal-edit-itinerary')" class="px-4 py-2 rounded-xl bg-sand text-mutedgray font-medium">取消</button>
+        <button onclick="saveItineraryCard()" class="px-4 py-2 rounded-xl bg-matcha text-white font-medium">儲存變更</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM NAVIGATION BAR (Mobile First) -->
+  <nav class="fixed bottom-0 left-0 right-0 max-w-md mx-auto z-40 bg-washi/95 backdrop-blur-md border-t border-softborder px-4 py-2 flex justify-around items-center">
+    <button onclick="switchTab('itinerary')" id="nav-itinerary" class="flex flex-col items-center gap-1 text-xs tab-active transition-all">
+      <i class="fa-solid fa-calendar-days text-base"></i>
+      <span class="font-zen text-[11px]">行程安排</span>
+    </button>
+    <button onclick="switchTab('info')" id="nav-info" class="flex flex-col items-center gap-1 text-xs text-mutedgray transition-all">
+      <i class="fa-solid fa-circle-info text-base"></i>
+      <span class="font-zen text-[11px]">旅程資訊</span>
+    </button>
+    <button onclick="switchTab('expense')" id="nav-expense" class="flex flex-col items-center gap-1 text-xs text-mutedgray transition-all">
+      <i class="fa-solid fa-wallet text-base"></i>
+      <span class="font-zen text-[11px]">記帳本</span>
+    </button>
+    <button onclick="switchTab('buy')" id="nav-buy" class="flex flex-col items-center gap-1 text-xs text-mutedgray transition-all">
+      <i class="fa-solid fa-cart-shopping text-base"></i>
+      <span class="font-zen text-[11px]">購物清單</span>
+    </button>
+  </nav>
+
+  <!-- JAVASCRIPT LOGIC & DATA -->
+  <script>
+    // --- 1. ITINERARY DATA (Parsed & Enhanced from PDF) ---
+    const defaultItineraryData = [
+      {
+        day: 1,
+        date: "11/05 (四)",
+        title: "Day 1 抵達濟州 · 涯月海岸線",
+        location: "濟州島",
+        weather: { temp: "17°C", desc: "晴朗微風", pop: "10%", feels: "16°C", icon: "fa-sun" },
+        items: [
+          {
+            type: "交通",
+            time: "02:55 - 06:40",
+            name: "香港 (HKG) ✈️ 濟州 (CJU)",
+            nameEnKo: "HK Express UO676 (HKG T2 -> CJU)",
+            addrKo: "제주특별자치도 제주시 공항로 2",
+            addrEn: "2 Gonghang-ro, Jeju-si, Jeju-do",
+            hours: "航班時間: 02:55 - 06:40",
+            highlight: "重要預約代號: UO676 隨心飛 (客運大樓2)",
+            guide: "抵達濟州機場後，前往 1樓 Exit Gate #5，過馬路至租車停車場 Area 5, No.14 乘坐 Jeju Angel Car 接駁巴士。首班車為 07:40 AM，車程約10-15分鐘。",
+            badgeType: "blue"
+          },
+          {
+            type: "景點",
+            time: "07:30 - 11:30",
+            name: "君悅酒店汗蒸幕 Grand Hyatt Korean Jjimjil Spa",
+            nameEnKo: "그랜드 하얏트 제주 찜질 스파",
+            addrKo: "제주특별자치도 제주시 노연로 12 6층",
+            addrEn: "6F, 12 Noyeon-ro, Jeju-si, Jeju-do",
+            hours: "07:00 - 00:00",
+            highlight: "成人票價: 30,000 won / 4hrs",
+            guide: "飛機降落後的最佳放鬆去處！位於君悅酒店6樓，提供高級韓式汗蒸、紅外線房與休息區，舒緩紅眼航班的疲勞。",
+            badgeType: "green"
+          },
+          {
+            type: "餐廳",
+            time: "11:30 - 13:00",
+            name: "新濟州海螺刀削麵 (신제주보말칼국수)",
+            nameEnKo: "Shinjeju Bomal Kalguksu",
+            addrKo: "제주 제주시 신대로 14길 17",
+            addrEn: "17 Sindae-ro 14-gil, Jeju-si, Jeju-do",
+            hours: "08:00 - 15:00 (14:30 最後點餐)",
+            highlight: "必吃美食: 海螺刀削麵 (보말칼국수) & 黑豬肉蒸餃 (흑돼지 손만두)",
+            guide: "濟州特色濃郁海螺湯底！海螺 (Bomal) 含有豐富營養，湯頭呈鮮美深綠色，搭配手工Q彈黑豬肉蒸餃，在地人極力推薦。",
+            badgeType: "orange"
+          },
+          {
+            type: "購物",
+            time: "13:30 - 14:30",
+            name: "Mochiron モッチロン 達克瓦茲 (外帶)",
+            nameEnKo: "Mochiron 모찌롱",
+            addrKo: "제주 제주시 관덕로 6길 10 오른쪽매장",
+            addrEn: "10 Gwandeok-ro 6-gil, Jeju-si",
+            hours: "10:00 - 18:00 (週日、一休息)",
+            highlight: "必買伴手禮: 巧克力、紅豆奶油、花生口味 Dacquoise (需冷藏)",
+            guide: "外酥內軟的法式蛋白餅名店！圖案外裝超可愛，買完需注意保冷。",
+            badgeType: "gold"
+          },
+          {
+            type: "餐廳",
+            time: "15:00 - 16:30",
+            name: "Siso Kaymak & Aewol Caramel 涯月甜點",
+            nameEnKo: "siso kaymak / 애월카라멜",
+            addrKo: "제주 제주시 애월읍 애월해안로 566 1층",
+            addrEn: "566 Aewolhaean-ro, Aewol-eup, Jeju-si",
+            hours: "09:00 - 20:00",
+            highlight: "必點菜單: 濃厚奶油卷 (₩13,000) + 天然蜂蜜 (₩2,000) + 新鮮麵包 (₩1,500)",
+            guide: "土耳其傳統極品奶油 Kaymak！濃郁乳香搭配純淨蜂蜜與現烤麵包，沿著涯月海岸公路享用超級幸福。",
+            badgeType: "orange"
+          },
+          {
+            type: "景點",
+            time: "17:00 - 18:30",
+            name: "Mumu Jeju 可愛小店 & 崖月邑日落 Cafe",
+            nameEnKo: "무무제주 & Haejigae Cafe (해지개)",
+            addrKo: "제주 제주시 애월읍 애월북서길 52",
+            addrEn: "52 Aewolbukseo-gil, Aewol-eup, Jeju-si",
+            hours: "Haejigae Cafe: 09:00 - 21:00",
+            highlight: "必看亮點: 涯月邑最美夕陽海景 + Mumu Jeju文創選物",
+            guide: "Mumu Jeju旁邊有停車場。Haejigae Cafe是韓屋風格海景咖啡廳，戶外草蓆區是欣賞濟州海邊日落的絕佳景點。",
+            badgeType: "green"
+          },
+          {
+            type: "住宿",
+            time: "19:00",
+            name: "Airbnb 濟州獨棟民宿 (Yongsu-ri)",
+            nameKo: "용수리 1480-2, Cheju, Jeju-do",
+            addrKo: "제주특별자치도 제주시 한경면 용수리 1480-2",
+            addrEn: "1480-2 Yongsu-ri, Hangyeong-myeon, Jeju-si",
+            hours: "Check-in: 16:00 / Check-out: 11:00",
+            highlight: "重要預約代號: Airbnb 預約 OK",
+            guide: "位於濟州西側平靜海岸的小鎮民宿，適合安靜休息打卡。",
+            badgeType: "slate"
+          }
+        ]
+      },
+      {
+        day: 2,
+        date: "11/06 (五)",
+        title: "Day 2 城山日出峰 · 牛島環島之旅",
+        location: "濟州東部",
+        weather: { temp: "16°C", desc: "多雲時晴", pop: "20%", feels: "15°C", icon: "fa-cloud-sun" },
+        items: [
+          {
+            type: "景點",
+            time: "08:00 - 09:30",
+            name: "城山日出峰 Seongsan Ilchulbong",
+            nameEnKo: "성산일출봉",
+            addrKo: "제주특별자치도 서귀포시 성산읍 일출로 284-12",
+            addrEn: "284-12 Ilchul-ro, Seongsan-eup, Seogwipo-si",
+            hours: "07:30 - 19:00",
+            highlight: "攻略秘訣: 推薦走「左邊免費路線」，風景同樣極佳！",
+            guide: "聯合國教科文組織世界自然遺產。若時間有限或不想爬陡峭階梯，走左側免費步道即可飽覽海邊火山口絕景與海女表演場地。",
+            badgeType: "green"
+          },
+          {
+            type: "交通",
+            time: "10:00 - 10:30",
+            name: "城山浦港碼頭 -> 搭船前往牛島 (Udo)",
+            nameEnKo: "Seongsanpo Port Passenger Terminal",
+            addrKo: "제주 서귀포시 성산읍 성산등용로 112-7",
+            addrEn: "112-7 Seongsandengyong-ro, Seongsan-eup",
+            hours: "船班每30分鐘一班 (船程約15分)",
+            highlight: "乘船手續: 候船室填寫 2張「乘船申報單」, 來回票價 ₩11,000, 停車費約 ₩8,000/天",
+            guide: "買票時務必隨身攜帶護照！牛島有天津港與下牛木洞港兩個碼頭，船班營運依當天風浪調整。",
+            badgeType: "blue"
+          },
+          {
+            type: "景點",
+            time: "10:30 - 14:00",
+            name: "牛島環島 (租電動單車 & UDO SAND 花生冰淇淋)",
+            nameEnKo: "Udo Sand Peanut Ice Cream / 우도샌드",
+            addrKo: "제주 제주시 우도면 우도해안길 788",
+            addrEn: "788 Udohaean-gil, Udo-myeon, Jeju-si",
+            hours: "10:30 - 18:00",
+            highlight: "必吃美食: Udo Sand 花生冰淇淋 + 花生夾心餅",
+            guide: "第一站先租電動單車/小跑車。牛島花生因土壤氣候特別香濃，必吃淋上香脆花生碎粒的濃厚牛奶冰淇淋！",
+            badgeType: "orange"
+          },
+          {
+            type: "餐廳",
+            time: "14:00 - 15:30",
+            name: "Udo Muldeuri 海女之家 / 牛島食堂",
+            nameEnKo: "우도물드리 / 우도식당",
+            addrKo: "제주 제주시 우도면 연평리 2427-1",
+            addrEn: "2427-1 Yeonpyeong-ri, Udo-myeon, Jeju-si",
+            hours: "09:00 - 17:00",
+            highlight: "必點菜單: 新鮮海女現撈海膽麵、海鮮拉麵",
+            guide: "無敵海景第一排海鮮餐廳，食材皆為在地海女現撈，鮮甜美味。",
+            badgeType: "orange"
+          },
+          {
+            type: "購物",
+            time: "15:30 - 16:30",
+            name: "Jeju Gyuri 濟州橘子紀念品店",
+            nameEnKo: "제주규리紀念品店",
+            addrKo: "제주 제주시 우도면 우도해안길 792",
+            addrEn: "792 Udohaean-gil, Udo-myeon, Jeju-si",
+            hours: "10:00 - 17:00",
+            highlight: "必買伴手禮: 橘子造型文創小物、牛島限定明信片",
+            guide: "位在海邊的文青紀念品小店，適合採買送給親友的小禮物。",
+            badgeType: "gold"
+          },
+          {
+            type: "餐廳",
+            time: "17:30 - 19:00",
+            name: "Sogeumbachi Sooninae 藍絲帶炒章魚 (소금바치 순이네)",
+            nameKo: "소금바치 순이네",
+            addrKo: "제주 제주시 구좌읍 해맞이해안로 2196",
+            addrEn: "2196 Haemajihaean-ro, Gujwa-eup, Jeju-si",
+            hours: "09:30 - 19:30 (休息 15:00-16:30, 週四公休)",
+            highlight: "必吃美食: 藍絲帶認證 辣炒章魚 (돌문어볶음)",
+            guide: "韓國藍絲帶美食認證！招牌辣炒章魚下面鋪滿素麵，九層塔與特製香辣醬汁拌勻後味道絕頂，最後一定要加點白飯炒飯！",
+            badgeType: "orange"
+          },
+          {
+            type: "住宿",
+            time: "19:30",
+            name: "Stay RoA 獨棟Villa",
+            nameEnKo: "Stay RoA",
+            addrKo: "제주 서귀포시 대정읍 무릉전지로34번길 21",
+            addrEn: "21 Mureungjeonji-ro 34beon-gil, Daejeong-eup, Seogwipo-si",
+            hours: "Check-in: 16:00 / Check-out: 11:00",
+            highlight: "重要預約代號: Stay RoA Booking Verified",
+            guide: "西歸浦質感絕佳的現代韓式傳統石牆Villa，享受安靜的夜晚。",
+            badgeType: "slate"
+          }
+        ]
+      },
+      {
+        day: 3,
+        date: "11/07 (六)",
+        title: "Day 3 西歸浦海景咖啡 · 森林與黑豬肉",
+        location: "濟州南部 / 西歸浦",
+        weather: { temp: "18°C", desc: "晴朗", pop: "0%", feels: "18°C", icon: "fa-sun" },
+        items: [
+          {
+            type: "景點",
+            time: "10:00 - 11:30",
+            name: "Cafe Lupin (루핀) 海景咖啡廳",
+            nameEnKo: "Cafe Lupin 루핀",
+            addrKo: "제주 서귀포시 대정읍 형제해안로 272",
+            addrEn: "272 Hyeongjehaean-ro, Daejeong-eup, Seogwipo-si",
+            hours: "10:00 - 18:00",
+            highlight: "必看亮點: 兄弟島 (Hyeongjedeo) 壯麗海景與手工咖啡",
+            guide: "位於松岳山海岸公路，窗外就是絕美兄弟島與蔚藍大海。",
+            badgeType: "green"
+          },
+          {
+            type: "景點",
+            time: "12:00 - 14:00",
+            name: "濟州堂 (제주당) 烘焙咖啡花園",
+            nameEnKo: "Jejudang Cafe",
+            addrKo: "제주 제주시 애월읍 월각로 927",
+            addrEn: "927 Wolgak-ro, Aewol-eup, Jeju-si",
+            hours: "10:00 - 21:00 (咖啡最後點餐 20:30)",
+            highlight: "必點菜單: 特色濟州造型麵包、抹茶拿鐵",
+            guide: "超大型溫室庭園造型咖啡館，室內有流水道與豐富綠植造景，好拍又好吃。",
+            badgeType: "green"
+          },
+          {
+            type: "景點",
+            time: "14:30 - 16:30",
+            name: "Dolcori Forest (돌코리숲) 森林步道",
+            nameEnKo: "Dolcori Forest 돌코리숲",
+            addrKo: "제주 서귀포시 안덕면 중산간서로 1878",
+            addrEn: "1878 Jungsanganseo-ro, Andeok-myeon, Seogwipo-si",
+            hours: "10:00 - 18:00 (週二休園)",
+            highlight: "必看亮點: 濟州天然Gotjawal原始樹林與可愛蜜柑貓雕像",
+            guide: "充滿芬多精的秘境步道，園區內有著名的柑橘貓 (Tangerine Cat) 大型裝置藝術。",
+            badgeType: "green"
+          },
+          {
+            type: "餐廳",
+            time: "17:30 - 19:30",
+            name: "黑豚市白豚面 神話世界店 (흑돈시백돈면)",
+            nameEnKo: "흑돈시백돈면 신화월드점",
+            addrKo: "제주 서귀포시 안덕면 중산간서로 1769",
+            addrEn: "1769 Jungsanganseo-ro, Andeok-myeon, Seogwipo-si",
+            hours: "11:30 - 23:00",
+            highlight: "必吃美食: 厚切炭烤濟州黑豬肉 (흑돼지 구이)",
+            guide: "神話世界附近評價極高的黑豬肉名店，肉質鮮嫩多汁，外皮烤至酥脆，搭配特製鯷魚醬汁 (Meljeot)。",
+            badgeType: "orange"
+          },
+          {
+            type: "住宿",
+            time: "20:00",
+            name: "濟州神話世界度假酒店 (Shinhwa World)",
+            nameEnKo: "Jeju Shinhwa World Resort",
+            addrKo: "제주 서귀포시 안덕면 신화역사로304번길 38",
+            addrEn: "38 Sinhwayeoksa-ro 304beon-gil, Andeok-myeon",
+            hours: "Check-in: 16:00 / Check-out: 11:00",
+            highlight: "重要預約代號: Shinhwa World 2 Nights",
+            guide: "五星級渡假村，設有無邊際泳池、購物街與娛樂設施。",
+            badgeType: "slate"
+          }
+        ]
+      },
+      {
+        day: 4,
+        date: "11/08 (日)",
+        title: "Day 4 生態小火車 · 吉卜力展與海膽盛宴",
+        location: "濟州東北部",
+        weather: { temp: "15°C", desc: "雲量較多", pop: "15%", feels: "14°C", icon: "fa-cloud" },
+        items: [
+          {
+            type: "餐廳",
+            time: "11:00 - 12:30",
+            name: "麵酒幕 濟州本店 (면주막)",
+            nameEnKo: "Myeonjumak Jeju Main Branch",
+            addrKo: "제주특별자치도 제주시 조천읍 번영로 1143",
+            addrEn: "1143 Beonyeong-ro, Jocheon-eup, Jeju-si",
+            hours: "09:00 - 15:00 (最後點餐 14:30)",
+            highlight: "必吃美食: 濟州豬肉湯麵 (고기국수) & 拌麵",
+            guide: "濃郁白湯豬肉麵，湯頭熬煮多時，豬肉片厚實嫩滑。",
+            badgeType: "orange"
+          },
+          {
+            type: "景點",
+            time: "13:00 - 15:00",
+            name: "Ecoland 生態樂園 (에코랜드)",
+            nameEnKo: "Ecoland Theme Park",
+            addrKo: "제주 제주시 조천읍 번영로 1278-169",
+            addrEn: "1278-169 Beonyeong-ro, Jocheon-eup, Jeju-si",
+            hours: "08:30 - 18:00",
+            highlight: "必看亮點: 英式復古蒸汽小火車穿梭葛札瓦 (Gotjawal) 原始林",
+            guide: "乘坐小火車遊覽四大主題園區，包括湖水公園、風車草原與腳踏船區。",
+            badgeType: "green"
+          },
+          {
+            type: "景點",
+            time: "15:30 - 17:00",
+            name: "吉卜力工作室展 in Jeju (스튜디오 지브리展)",
+            nameEnKo: "Studio Ghibli Exhibition in Jeju",
+            addrKo: "제주 제주시 구좌읍 비자림로 1191 (송당동화마을)",
+            addrEn: "1191 Bijarim-ro, Gujwa-eup (Songdang Fairytale Village)",
+            hours: "09:00 - 19:00",
+            highlight: "門票資訊: 成人票 22,000韓元 (2026/07-2027/07 期間限定展)",
+            guide: "位於松堂童話村！展出宮崎駿經典動畫《龍貓》、《千與千尋》、《魔女宅急便》等實景一比一造型，吉卜力迷不可錯過。",
+            badgeType: "green"
+          },
+          {
+            type: "購物",
+            time: "17:30 - 18:30",
+            name: "Tote 濟州紀念品店 & Samsonite Outlet",
+            nameEnKo: "Tote Souvenir Shop / Samsonite Factory",
+            addrKo: "제주 제주시 중앙로13길 35 1층",
+            addrEn: "35 Jungang-ro 13-gil, Jeju-si",
+            hours: "10:30 - 19:30",
+            highlight: "必買伴手禮: Tote 手作布包與質感文具",
+            guide: "在濟州市區進行晚餐前最後的採買血拼。",
+            badgeType: "gold"
+          },
+          {
+            type: "餐廳",
+            time: "19:00 - 20:30",
+            name: "Unidam (우니담) 高級海膽料理",
+            nameEnKo: "Unidam Aewol",
+            addrKo: "제주 제주시 애월읍 고내로13길 107 2층",
+            addrEn: "2F, 107 Gonae-ro 13-gil, Aewol-eup, Jeju-si",
+            hours: "09:00 - 19:30 (午休 14:30-16:00)",
+            highlight: "必點菜單: 滿滿海膽蓋飯 (우니덮밥) 、海膽海帶湯、蒲燒鰻魚飯",
+            guide: "涯月海景第一排名店！鋪滿黃金海膽的蓋飯極致奢華美味，海膽鮮甜無腥味。",
+            badgeType: "orange"
+          }
+        ]
+      },
+      {
+        day: 5,
+        date: "11/09 (一)",
+        title: "Day 5 濟州飛往首爾 · 弘大鰻魚與樂天超市",
+        location: "濟州 -> 首爾",
+        weather: { temp: "12°C", desc: "微涼秋晴", pop: "5%", feels: "11°C", icon: "fa-sun" },
+        items: [
+          {
+            type: "餐廳",
+            time: "10:00 - 11:30",
+            name: "Noraba 海景海鮮拉麵店 (노라바)",
+            nameEnKo: "Noraba Seafood Ramen",
+            addrKo: "제주 제주시 애월읍 애월해안로 570-1",
+            addrEn: "570-1 Aewolhaean-ro, Aewol-eup, Jeju-si",
+            hours: "10:00 - 16:30 (午休 14:00-15:00)",
+            highlight: "攻略秘訣: 務必提前使用 Catch Table App 預約候位！必吃整隻章魚海鮮拉麵",
+            guide: "濟州超人氣海鮮拉麵，整隻螃蟹與活鮑魚、章魚豪氣放入，看著海景享用最頂級。",
+            badgeType: "orange"
+          },
+          {
+            type: "交通",
+            time: "13:20 - 14:40",
+            name: "濟州 (CJU) ✈️ 首爾金浦 (GMP)",
+            nameEnKo: "Air Busan BX 8342 Economy",
+            addrKo: "제주 제주시 공항로 2 -> 서울 강서구 하늘길 38",
+            addrEn: "Jeju Airport -> Gimpo Airport",
+            hours: "飛行時間: 1小時20分 (13:20 - 14:40)",
+            highlight: "重要預約代號: 釜山航空 KF8ZBI (還車後搭乘)",
+            guide: "早上11:30前返回 Angel Car 總部還車，搭接駁車前往濟州機場搭國內線至金浦。",
+            badgeType: "blue"
+          },
+          {
+            type: "住宿",
+            time: "16:00",
+            name: "JUNIBINO HOTEL HONGDAE (弘大朱尼比諾酒店)",
+            nameEnKo: "JUNIBINO HOTEL HONGDAE",
+            addrKo: "서울특별시 마포구 양화로 8",
+            addrEn: "8 Yanghwa-ro, Mapo-gu, Seoul",
+            hours: "Check-in: 15:00 / Check-out: 11:00",
+            highlight: "重要預約代號: Junibino Hongdae 3 Nights",
+            guide: "交通極其便利，距離合井/弘大商圈步行即可到達。",
+            badgeType: "slate"
+          },
+          {
+            type: "餐廳",
+            time: "19:00 - 20:30",
+            name: "一心鰻魚 弘大總店 (Ilsim 일심장어)",
+            nameEnKo: "Ilsim Eel Hongdae",
+            addrKo: "서울특별시 마포구 동교동 198-31",
+            addrEn: "198-31 Donggyo-dong, Mapo-gu, Seoul",
+            hours: "12:00 - 21:30 (午休 15:30-16:30)",
+            highlight: "重要預約代號: 已成功訂位 7:00 PM (Google 5.0顆星超高評價)",
+            guide: "Google 數千好評的現烤淡水鰻魚！炭火現烤外皮香酥、肉質肥美，配上特製醬汁與生薑絲。",
+            badgeType: "orange"
+          },
+          {
+            type: "購物",
+            time: "21:00 - 22:30",
+            name: "樂天超市 首爾站店 (Lotte Mart)",
+            nameEnKo: "Lotte Mart Seoul Station",
+            addrKo: "서울 중구 한강대로 405",
+            addrEn: "405 Hangang-daero, Jung-gu, Seoul",
+            hours: "10:00 - 24:00 (地鐵1/4號線首爾站1號出口)",
+            highlight: "必買伴手禮: 韓國零食、泡麵、海苔、退稅可直接現場辦理",
+            guide: "首爾最大超市之一，提供現場即時退稅與打包箱服務。",
+            badgeType: "gold"
+          }
+        ]
+      },
+      {
+        day: 6,
+        date: "11/10 (二)",
+        title: "Day 6 聖水洞潮牌流行與米其林美食",
+        location: "首爾 聖水洞",
+        weather: { temp: "11°C", desc: "晴朗", pop: "0%", feels: "10°C", icon: "fa-sun" },
+        items: [
+          {
+            type: "餐廳",
+            time: "11:30 - 13:00",
+            name: "安木 聖水店 (안목 성수) 米其林豬肉湯飯",
+            nameEnKo: "Anmok Seongsu Michelin Pork Soup",
+            addrKo: "서울 성동구 뚝섬로13길 34 1층",
+            addrEn: "1F, 34 Ttukseom-ro 13-gil, Seongdong-gu, Seoul",
+            hours: "10:00 - 22:00 (0507-1458-0837)",
+            highlight: "必吃美食: 紐約時報 & 米其林推薦 豬肉湯飯 (돼지국밥 ₩13,000) & 水煮肉 (수육)",
+            guide: "2024-2026 米其林指南與《New York Times》大力推薦！湯頭清澈甘甜無腥味，肉質極其細嫩。建議先登錄 Catch Table 現場排隊。",
+            badgeType: "orange"
+          },
+          {
+            type: "購物",
+            time: "13:30 - 16:30",
+            name: "聖水洞商圈逛街 (Beidelli 服飾 & 自然島鹽可頌)",
+            nameEnKo: "Beidelli Seongsu & Jayeondo Salt Bread",
+            addrKo: "서울특별시 성동구 연무장길 103",
+            addrEn: "103 Yeonmujang-gil, Seongdong-gu, Seoul",
+            hours: "11:00 - 20:00 (聖水站3號出口)",
+            highlight: "必買伴手禮: Beidelli 韓系質感服飾 & 自然島剛出爐鹽可頌",
+            guide: "首爾最火紅的潮流集散地！除了特色小店，自然島鹽可頌一口咬下奶油香氣四溢。",
+            badgeType: "gold"
+          },
+          {
+            type: "餐廳",
+            time: "17:30 - 19:30",
+            name: "陵洞水芹菜 聖水直營店 (능동미나리)",
+            nameEnKo: "Neungdong Minari Seongsu",
+            addrKo: "서울 성동구 연무장길 42",
+            addrEn: "42 Yeonmujang-gil, Seongdong-gu, Seoul",
+            hours: "10:00 - 23:00",
+            highlight: "必點菜單: 水芹牛骨牛肉湯飯 (₩15,000) & 水芹生牛肉拌飯 (₩15,000)",
+            guide: "鋪滿滿新鮮爽脆水芹菜 (Minari) 的牛骨湯飯與鮮美生牛肉拌飯，極具韓國代表性的清爽美食。",
+            badgeType: "orange"
+          },
+          {
+            type: "餐廳",
+            time: "21:30 - 23:00",
+            name: "麻浦牛小腸城 (마포곱창타운) 宵夜",
+            nameEnKo: "Mapo Gopchang Town",
+            addrKo: "서울 마포구 월드컵북로4길 42",
+            addrEn: "42 World Cup buk-ro 4-gil, Mapo-gu, Seoul",
+            hours: "15:00 - 01:00",
+            highlight: "必吃美食: 烤牛小腸組合 (곱창모듬)",
+            guide: "弘大/麻浦在地人最愛的深夜燒烤牛小腸，搭配韭菜與韭菜炒飯超夠味！",
+            badgeType: "orange"
+          }
+        ]
+      },
+      {
+        day: 7,
+        date: "11/11 (三)",
+        title: "Day 7 梨泰院美容 · 益善洞與廣藏市場",
+        location: "首爾 梨泰院 / 鍾路",
+        weather: { temp: "10°C", desc: "晴間多雲", pop: "10%", feels: "9°C", icon: "fa-cloud-sun" },
+        items: [
+          {
+            type: "景點",
+            time: "10:00 - 12:00",
+            name: "닥터올린 클리닉 (Dr. Olin Clinic 梨泰院)",
+            nameEnKo: "Dr. Olin Clinic Itaewon",
+            addrKo: "서울특별시 용산구 이태원로 179 해밀톤 쇼핑몰 1층 4호",
+            addrEn: "Room 4, 1F, Hamilton Shopping Mall, 179 Itaewon-ro",
+            hours: "重要預約時間: 10:00 AM (6號線 梨泰院站 1號出口)",
+            highlight: "重要預約代號: 닥터올린 10:00 AM Booking Verified",
+            guide: "位於漢密爾頓購物中心1樓，提供頂級韓系面板管理與醫美保養服務。",
+            badgeType: "green"
+          },
+          {
+            type: "景點",
+            time: "12:30 - 15:00",
+            name: "益善洞韓屋村 (Ikseon-dong)",
+            nameEnKo: "Ikseon-dong Hanok Village",
+            addrKo: "서울특별시 종로구 수표로28길 일대",
+            addrEn: "Ikseon-dong, Jongno-gu, Seoul",
+            hours: "全天開放",
+            highlight: "必看亮點: 古色古香韓屋文青巷弄、特色咖啡館",
+            guide: "保存完整的百年韓屋小巷，充滿復古咖啡廳、手作配件店與拍貼機。",
+            badgeType: "green"
+          },
+          {
+            type: "餐廳",
+            time: "15:30 - 17:30",
+            name: "廣藏市場 (광장시장) 265號綠豆煎餅",
+            nameEnKo: "Gwangjang Market",
+            addrKo: "서울특별시 종로구 창경궁로 88",
+            addrEn: "88 Changgyeonggung-ro, Jongno-gu, Seoul",
+            hours: "09:00 - 23:00",
+            highlight: "必吃美食: 攤位 265號 現炸香脆綠豆煎餅 (녹두빈대떡) & 生牛肉麻油",
+            guide: "韓國傳統美食大本營！現磨現炸的綠豆煎餅外脆內軟，配上一碗馬格利米酒極享受。",
+            badgeType: "orange"
+          },
+          {
+            type: "購物",
+            time: "18:00 - 20:00",
+            name: "No Brand 東大門 Doota Mall 店",
+            nameEnKo: "No Brand Dongdaemun Doota",
+            addrKo: "서울 중구 장충단로 275 4층",
+            addrEn: "4F, 275 Jangchungdan-ro, Jung-gu, Seoul",
+            hours: "10:30 - 22:00",
+            highlight: "必買伴手禮: No Brand 紫薯洋芋片、起司餅乾、優質零食",
+            guide: "Emart 旗下高 CP 值超市，採買零食伴手禮非常劃算。",
+            badgeType: "gold"
+          },
+          {
+            type: "餐廳",
+            time: "20:30 - 22:00",
+            name: "太初排骨 (태초갈비 弘大)",
+            nameEnKo: "Taecho Galbi Hongdae",
+            addrKo: "서울 마포구 어울마당로 122 2층",
+            addrEn: "2F, 122 Eoulmadang-ro, Mapo-gu, Seoul",
+            hours: "12:00 - 23:00 (弘大9號出口)",
+            highlight: "必吃美食: 特製醬燒豬排骨 (돼지갈비)",
+            guide: "位於弘大熱鬧商圈，炭火烤醬醃排骨鹹甜入味，完美結束首爾最後一夜。",
+            badgeType: "orange"
+          }
+        ]
+      },
+      {
+        day: 8,
+        date: "11/12 (四)",
+        title: "Day 8 仁川機場返港",
+        location: "首爾 -> 香港",
+        weather: { temp: "9°C", desc: "微涼秋天", pop: "0%", feels: "8°C", icon: "fa-sun" },
+        items: [
+          {
+            type: "交通",
+            time: "11:30 - 13:00",
+            name: "弘大/飯店 -> 前往仁川國際機場 (ICN)",
+            nameEnKo: "AREX Express Train to ICN Terminal 1",
+            addrKo: "인천 중구 공항로 272 인천국제공항 1여객터미널",
+            addrEn: "Incheon International Airport T1",
+            hours: "建議提前3小時抵達機場",
+            highlight: "重要預約代號: AREX 直通列車 或 6002 號機場巴士",
+            guide: "整理行李退房後，搭乘 AREX 直通列車前往仁川機場 T1辦理登機與退稅手續。",
+            badgeType: "blue"
+          },
+          {
+            type: "交通",
+            time: "15:45 - 18:50",
+            name: "首爾仁川 (ICN) ✈️ 香港 (HKG)",
+            nameEnKo: "HK Express UO631 (ICN T1 -> HKG T1)",
+            addrKo: "인천국제공항 제1여객터미널",
+            addrEn: "Incheon Airport T1",
+            hours: "航班時間: 15:45 - 18:50 (約3.5小時)",
+            highlight: "重要預約代號: UO631 Fare Class U (客運大樓1)",
+            guide: "滿載濟州與首爾的美好回憶，平安返回香港！",
+            badgeType: "blue"
+          }
+        ]
+      }
+    ];
+
+    // --- 2. DEFAULT EDITABLE INFO DATA ---
+    const defaultTripInfo = {
+      flight: `✈️ 去程: HK Express UO676
+・日期: 2026-11-05 (四) 02:55 HKG T2 -> 06:40 CJU
+・艙等: 隨心飛 (Fare Class U)
+
+✈️ 韓國內陸線: Air Busan BX8342
+・日期: 2026-11-09 (一) 13:20 CJU -> 14:40 GMP
+・訂位代號: KF8ZBI
+
+✈️ 回程: HK Express UO631
+・日期: 2026-11-12 (四) 15:45 ICN T1 -> 18:50 HKG T1`,
+
+      car: `🚗 租車公司: Jeju Angel Rent Car (제주엔젤카)
+・取車時間: 2026-11-05 08:00
+・還車時間: 2026-11-09 18:00 (預計提前11:30還車)
+・總店地址: 171-1, Doryeong-ro, Jeju-si (제주시 도령로 171-1)
+
+🚌 接駁車指南:
+・地點: 濟州機場 1樓 Exit Gate #5 出口，過馬路至租車停車場「Area 5, No. 14」
+・班次: 每 20-30 分鐘一班 (首班車 07:40 AM)
+・換班時間: 11:00-12:00 / 17:00-18:00 (每30分一班)`,
+
+      hotel: `🏠 濟州 Day 1: Airbnb 獨棟民宿
+・地址: 용수리 1480-2, Cheju, Jeju-do
+・Check-in: 16:00 / Check-out: 11:00
+
+🏠 濟州 Day 2: Stay RoA
+・地址: 21 Mureungjeonji-ro 34beon-gil, Daejeong-eup, Seogwipo
+・Check-in: 16:00 / Check-out: 11:00
+
+🏠 濟州 Day 3-4: 濟州神話世界度假酒店 (Shinhwa World)
+・地址: 38 Sinhwayeoksa-ro 304beon-gil, Andeok-myeon, Seogwipo
+
+🏠 首爾 Day 5-8: JUNIBINO HOTEL HONGDAE
+・地址: 서울특별시 마포구 양화로 8 (弘大/合井)
+・Check-in: 15:00 / Check-out: 11:00`,
+
+      emergency: `🚨 韓國旅遊諮詢與翻譯專線: 1330 (中文/英文/韓文)
+🚨 韓國緊急報警: 112 / 消防救護: 119
+🚨 香港入境處24小時求助熱線: +852 1868
+🚨 中國駐韓國大使館領事保護: +82-2-755-0570
+🚨 濟州 Angel Car 租車客服: +82-64-744-1100`
+    };
+
+    // --- 3. INITIAL TO-BUY LIST ---
+    const initialBuyList = [
+      { id: 1, text: "Mochiron 達克瓦茲 (巧克力/紅豆奶油/花生)", category: "濟州伴手禮", done: false },
+      { id: 2, text: "UDO SAND 牛島花生夾心餅 & 冰淇淋", category: "濟州伴手禮", done: false },
+      { id: 3, text: "Siso Kaymak 濃厚奶油卷", category: "美食", done: false },
+      { id: 4, text: "Aewol Caramel 手工焦糖糖果", category: "濟州伴手禮", done: false },
+      { id: 5, text: "Beidelli 韓系服飾 (聖水店)", category: "服飾", done: false },
+      { id: 6, text: "自然島鹽可頌 (聖水店)", category: "美食", done: false },
+      { id: 7, text: "No Brand 紫薯洋芋片 & 韓國泡麵", category: "超市零食", done: false },
+      { id: 8, text: "Olive Young 護膚面膜與彩妝", category: "美妝", done: false }
+    ];
+
+    // --- STATE MANAGEMENT & LOCAL STORAGE ---
+    let currentDayIndex = 0;
+    let currentEditKey = '';
+    let buyFilter = 'all';
+
+    let itineraryData = JSON.parse(localStorage.getItem('jeju_itinerary_data')) || defaultItineraryData;
+    let tripInfoState = JSON.parse(localStorage.getItem('jeju_trip_info')) || defaultTripInfo;
+    let expensesState = JSON.parse(localStorage.getItem('jeju_expenses')) || [
+      { id: 1, name: "君悅汗蒸幕門票", amount: 30000, category: "景點" },
+      { id: 2, name: "城山浦港牛島來回船票", amount: 11000, category: "交通" },
+      { id: 3, name: "吉卜力展覽門票", amount: 22000, category: "景點" }
+    ];
+    let toBuyState = JSON.parse(localStorage.getItem('jeju_tobuy')) || initialBuyList;
+    let exchangeRate = Number(localStorage.getItem('jeju_exchange_rate')) || 172; // 預設 1 HKD = 172 KRW
+
+    // --- APP INITIALIZATION ---
+    window.onload = function() {
+      renderDayPills();
+      renderDayItinerary(0);
+      renderTripInfo();
+      renderExpenses();
+      renderBuyList();
+      document.getElementById('custom-rate-input').value = exchangeRate;
+
+      // 註冊 Service Worker 進行離線快取支援
+      registerServiceWorker();
+    };
+
+    // --- SERVICE WORKER REGISTRATION ---
+    function registerServiceWorker() {
+      if ('serviceWorker' in navigator) {
+        // 使用 Blob 技術在單一 HTML 檔案內建立並註冊動態 Service Worker
+        const swCode = `
+          const CACHE_NAME = 'jeju-guide-v1';
+          const urlsToCache = [
+            './',
+            'https://cdn.tailwindcss.com',
+            'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
+          ];
+
+          self.addEventListener('install', event => {
+            event.waitUntil(
+              caches.open(CACHE_NAME).then(cache => {
+                return cache.addAll(urlsToCache).catch(err => console.log('SW cache partial fail', err));
+              })
+            );
+            self.skipWaiting();
+          });
+
+          self.addEventListener('activate', event => {
+            event.waitUntil(
+              caches.keys().then(cacheNames => {
+                return Promise.all(
+                  cacheNames.map(cache => {
+                    if (cache !== CACHE_NAME) {
+                      return caches.delete(cache);
+                    }
+                  })
+                );
+              })
+            );
+            self.clients.claim();
+          });
+
+          self.addEventListener('fetch', event => {
+            event.respondWith(
+              caches.match(event.request).then(response => {
+                if (response) {
+                  return response;
+                }
+                return fetch(event.request).then(fetchRes => {
+                  if (!fetchRes || fetchRes.status !== 200 || fetchRes.type !== 'basic') {
+                    return fetchRes;
+                  }
+                  const responseToCache = fetchRes.clone();
+                  caches.open(CACHE_NAME).then(cache => {
+                    cache.put(event.request, responseToCache);
+                  });
+                  return fetchRes;
+                }).catch(() => {
+                  // 離線備援處置
+                  return response;
+                });
+              })
+            );
+          });
+        `;
+
+        const blob = new Blob([swCode], { type: 'text/javascript' });
+        const swUrl = URL.createObjectURL(blob);
+
+        navigator.serviceWorker.register(swUrl)
+          .then(reg => {
+            console.log('Service Worker 註冊成功:', reg.scope);
+          })
+          .catch(err => {
+            console.warn('Service Worker 註冊跳過或受限:', err);
+          });
+      }
+    }
+
+    // --- TAB SWITCHING ---
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.getElementById(`tab-${tab}`).classList.remove('hidden');
+
+      // Update Nav Buttons
+      ['itinerary', 'info', 'expense', 'buy'].forEach(t => {
+        const btn = document.getElementById(`nav-${t}`);
+        if (btn) {
+          if (t === tab) {
+            btn.className = "flex flex-col items-center gap-1 text-xs tab-active transition-all";
+          } else {
+            btn.className = "flex flex-col items-center gap-1 text-xs text-mutedgray transition-all";
+          }
+        }
+      });
+
+      // Update Header Title based on Tab
+      const headerTitle = document.getElementById('header-title');
+      if (tab === 'itinerary') headerTitle.innerText = "濟州自駕遊";
+      else if (tab === 'info') headerTitle.innerText = "旅程隨身資訊";
+      else if (tab === 'expense') headerTitle.innerText = "旅程記帳本";
+      else if (tab === 'buy') headerTitle.innerText = "必買與願望清單";
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // --- DAY PILLS & ITINERARY RENDERING ---
+    function renderDayPills() {
+      const container = document.getElementById('day-pills');
+      container.innerHTML = itineraryData.map((d, idx) => `
+        <button onclick="changeDay(${idx})" class="flex-shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all ${idx === currentDayIndex ? 'bg-matcha text-white shadow-md font-bold' : 'bg-washi text-mutedgray border border-softborder hover:bg-sand'}">
+          D${d.day} <span class="text-[10px] opacity-90">${d.date.split(' ')[0]}</span>
+        </button>
+      `).join('');
+    }
+
+    function changeDay(index) {
+      currentDayIndex = index;
+      renderDayPills();
+      renderDayItinerary(index);
+    }
+
+    function renderDayItinerary(index) {
+      const data = itineraryData[index];
+
+      // Update Weather Pill
+      document.getElementById('weather-temp').innerText = data.weather.temp;
+      document.getElementById('weather-desc').innerText = data.weather.desc;
+      document.getElementById('weather-pop').innerText = data.weather.pop;
+      document.getElementById('weather-feels').innerText = data.weather.feels;
+      document.getElementById('weather-location').innerHTML = `<i class="fa-solid fa-location-dot text-[10px] text-terracotta"></i> ${data.location}`;
+      document.getElementById('weather-icon-container').innerHTML = `<i class="fa-solid ${data.weather.icon} animate-pulse"></i>`;
+
+      // Update Day Header
+      document.getElementById('day-title').innerHTML = `<i class="fa-regular fa-calendar-check text-matcha"></i> ${data.title}`;
+      document.getElementById('day-sub-location').innerText = data.location;
+
+      // Render Cards
+      const cardsContainer = document.getElementById('cards-container');
+      if (!data.items || data.items.length === 0) {
+        cardsContainer.innerHTML = `<div class="text-center text-xs text-mutedgray py-12 bg-washi rounded-2xl border border-softborder">本日暫無行程安排，點擊右上角「新增行程」吧！</div>`;
+        return;
+      }
+
+      cardsContainer.innerHTML = data.items.map((item, itemIdx) => {
+
+        // Badge Styling
+        let badgeStyle = "bg-matchalight text-matcha border-matcha/30";
+        if (item.badgeType === "orange") badgeStyle = "bg-terracottalight text-terracotta border-terracotta/30";
+        else if (item.badgeType === "gold") badgeStyle = "bg-mustardlight text-mustard border-mustard/30";
+        else if (item.badgeType === "blue") badgeStyle = "bg-slatebluelight text-slateblue border-slateblue/30";
+        else if (item.badgeType === "slate") badgeStyle = "bg-sand text-charcoal border-softborder";
+
+        // Navigation Search Queries / Custom URLs
+        const searchNavQuery = encodeURIComponent(`${item.name} ${item.addrKo || ''}`);
+        const googleMapUrl = item.customGoogleUrl || `https://www.google.com/maps/search/?api=1&query=${searchNavQuery}`;
+        const naverMapUrl = item.customNaverUrl || `https://map.naver.com/v5/search/${searchNavQuery}`;
+
+        return `
+          <div class="bg-washi border border-softborder rounded-2xl p-4 shadow-sm hover:shadow-md transition-all space-y-3 relative group">
+            
+            <!-- Card Header & Management Tools (Edit / Move / Delete) -->
+            <div class="flex justify-between items-start gap-2">
+              <div class="space-y-1 flex-1">
+                <div class="flex items-center gap-2 flex-wrap">
+                  <span class="text-[11px] font-bold px-2 py-0.5 rounded-md border ${badgeStyle}">${item.type}</span>
+                  ${item.time ? `<span class="text-xs text-mutedgray font-medium"><i class="fa-regular fa-clock text-[10px]"></i> ${item.time}</span>` : ''}
+                </div>
+                <h3 class="text-base font-bold font-zen text-charcoal leading-snug">${item.name}</h3>
+                ${item.nameEnKo ? `<p class="text-xs text-mutedgray/90 font-mono">${item.nameEnKo}</p>` : ''}
+              </div>
+
+              <!-- Quick Action Buttons: Move Up, Move Down, Edit, Delete -->
+              <div class="flex items-center gap-1.5 text-xs bg-linen p-1 rounded-xl border border-softborder shrink-0">
+                <button onclick="moveItineraryCard(${itemIdx}, -1)" class="w-6 h-6 flex items-center justify-center text-mutedgray hover:text-charcoal hover:bg-sand rounded-lg transition-colors" title="上移">
+                  <i class="fa-solid fa-arrow-up text-[11px]"></i>
+                </button>
+                <button onclick="moveItineraryCard(${itemIdx}, 1)" class="w-6 h-6 flex items-center justify-center text-mutedgray hover:text-charcoal hover:bg-sand rounded-lg transition-colors" title="下移">
+                  <i class="fa-solid fa-arrow-down text-[11px]"></i>
+                </button>
+                <div class="w-[1px] h-3 bg-softborder"></div>
+                <button onclick="openEditItineraryModal(${itemIdx})" class="w-6 h-6 flex items-center justify-center text-matcha hover:bg-matchalight rounded-lg transition-colors" title="編輯">
+                  <i class="fa-solid fa-pen text-[11px]"></i>
+                </button>
+                <button onclick="deleteItineraryCard(${itemIdx})" class="w-6 h-6 flex items-center justify-center text-mutedgray hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors" title="刪除">
+                  <i class="fa-regular fa-trash-can text-[11px]"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- Operating Hours & Highlight Tag -->
+            ${item.hours ? `
+              <div class="text-[11px] text-mutedgray flex items-center gap-1.5 bg-linen px-2.5 py-1 rounded-lg border border-softborder/60">
+                <i class="fa-solid fa-store text-matcha"></i>
+                <span>${item.hours}</span>
+              </div>
+            ` : ''}
+
+            ${item.highlight ? `
+              <div class="bg-terracottalight/70 border border-terracotta/20 text-terracotta text-xs p-2.5 rounded-xl font-medium space-y-0.5">
+                <div class="flex items-center gap-1 font-bold">
+                  <i class="fa-solid fa-star text-[10px]"></i> 導遊手札 / 亮點
+                </div>
+                <div>${formatHighlight(item.highlight)}</div>
+              </div>
+            ` : ''}
+
+            <!-- Story / Extra Insights -->
+            ${item.guide ? `
+              <div class="text-xs text-charcoal/90 bg-sand/40 p-3 rounded-xl border border-softborder/60 leading-relaxed">
+                <span class="font-semibold text-matcha font-zen">💡 景點故事與攻略：</span>${item.guide}
+              </div>
+            ` : ''}
+
+            <!-- Address & Copy Button -->
+            ${(item.addrKo || item.addrEn) ? `
+              <div class="bg-linen p-2.5 rounded-xl border border-softborder/80 space-y-1 text-[11px]">
+                <div class="flex justify-between items-center">
+                  <span class="text-mutedgray font-medium">地址 (Address)</span>
+                  ${item.addrKo ? `
+                    <button onclick="copyToClipboard('${escapeQuotes(item.addrKo)}')" class="text-matcha hover:underline flex items-center gap-1 font-medium">
+                      <i class="fa-regular fa-copy"></i> 複製韓文地址
+                    </button>
+                  ` : ''}
+                </div>
+                ${item.addrKo ? `<div class="text-charcoal font-mono select-all">${item.addrKo}</div>` : ''}
+                ${item.addrEn ? `<div class="text-mutedgray font-mono text-[10px] truncate">${item.addrEn}</div>` : ''}
+              </div>
+            ` : ''}
+
+            <!-- Navigation Buttons (支援自訂連結與動態連結) -->
+            <div class="grid grid-cols-2 gap-2 pt-1">
+              <a href="${googleMapUrl}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-1.5 bg-linen hover:bg-sand text-charcoal border border-softborder py-2 px-3 rounded-xl text-xs font-medium transition-colors">
+                <i class="fa-map-location-dot text-red-500"></i> Google Map
+              </a>
+              <a href="${naverMapUrl}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-1.5 bg-matchalight hover:bg-matchalight/80 text-matcha border border-matcha/30 py-2 px-3 rounded-xl text-xs font-medium transition-colors">
+                <i class="fa-solid fa-location-arrow text-matcha"></i> Naver Map 導航
+              </a>
+            </div>
+
+          </div>
+        `;
+      }).join('');
+    }
+
+    // --- ITINERARY CARD CRUD & REORDER LOGIC ---
+    function openAddItineraryModal() {
+      document.getElementById('modal-itin-title').innerText = `新增 D${itineraryData[currentDayIndex].day} 行程`;
+      document.getElementById('itin-item-index').value = "-1";
+      document.getElementById('itin-type').value = "景點";
+      document.getElementById('itin-badge-type').value = "green";
+      document.getElementById('itin-time').value = "";
+      document.getElementById('itin-name').value = "";
+      document.getElementById('itin-name-enko').value = "";
+      document.getElementById('itin-addr-ko').value = "";
+      document.getElementById('itin-addr-en').value = "";
+      document.getElementById('itin-custom-google-url').value = "";
+      document.getElementById('itin-custom-naver-url').value = "";
+      document.getElementById('itin-hours').value = "";
+      document.getElementById('itin-highlight').value = "";
+      document.getElementById('itin-guide').value = "";
+
+      document.getElementById('modal-edit-itinerary').classList.remove('hidden');
+    }
+
+    function openEditItineraryModal(itemIdx) {
+      const item = itineraryData[currentDayIndex].items[itemIdx];
+      document.getElementById('modal-itin-title').innerText = "編輯行程卡片";
+      document.getElementById('itin-item-index').value = itemIdx;
+      document.getElementById('itin-type').value = item.type || "景點";
+      document.getElementById('itin-badge-type').value = item.badgeType || "green";
+      document.getElementById('itin-time').value = item.time || "";
+      document.getElementById('itin-name').value = item.name || "";
+      document.getElementById('itin-name-enko').value = item.nameEnKo || "";
+      document.getElementById('itin-addr-ko').value = item.addrKo || "";
+      document.getElementById('itin-addr-en').value = item.addrEn || "";
+      document.getElementById('itin-custom-google-url').value = item.customGoogleUrl || "";
+      document.getElementById('itin-custom-naver-url').value = item.customNaverUrl || "";
+      document.getElementById('itin-hours').value = item.hours || "";
+      document.getElementById('itin-highlight').value = item.highlight || "";
+      document.getElementById('itin-guide').value = item.guide || "";
+
+      document.getElementById('modal-edit-itinerary').classList.remove('hidden');
+    }
+
+    function saveItineraryCard() {
+      const itemIdx = parseInt(document.getElementById('itin-item-index').value);
+      const name = document.getElementById('itin-name').value.trim();
+
+      if (!name) {
+        showToast('請至少輸入行程名稱！');
+        return;
+      }
+
+      const cardData = {
+        type: document.getElementById('itin-type').value,
+        badgeType: document.getElementById('itin-badge-type').value,
+        time: document.getElementById('itin-time').value.trim(),
+        name: name,
+        nameEnKo: document.getElementById('itin-name-enko').value.trim(),
+        addrKo: document.getElementById('itin-addr-ko').value.trim(),
+        addrEn: document.getElementById('itin-addr-en').value.trim(),
+        customGoogleUrl: document.getElementById('itin-custom-google-url').value.trim(),
+        customNaverUrl: document.getElementById('itin-custom-naver-url').value.trim(),
+        hours: document.getElementById('itin-hours').value.trim(),
+        highlight: document.getElementById('itin-highlight').value.trim(),
+        guide: document.getElementById('itin-guide').value.trim()
+      };
+
+      if (itemIdx === -1) {
+        // Add new card
+        itineraryData[currentDayIndex].items.push(cardData);
+        showToast('已新增行程！');
+      } else {
+        // Update existing card
+        itineraryData[currentDayIndex].items[itemIdx] = cardData;
+        showToast('已更新行程！');
+      }
+
+      localStorage.setItem('jeju_itinerary_data', JSON.stringify(itineraryData));
+      renderDayItinerary(currentDayIndex);
+      closeModal('modal-edit-itinerary');
+    }
+
+    function deleteItineraryCard(itemIdx) {
+      itineraryData[currentDayIndex].items.splice(itemIdx, 1);
+      localStorage.setItem('jeju_itinerary_data', JSON.stringify(itineraryData));
+      renderDayItinerary(currentDayIndex);
+      showToast('已刪除行程');
+    }
+
+    function moveItineraryCard(itemIdx, direction) {
+      const items = itineraryData[currentDayIndex].items;
+      const targetIdx = itemIdx + direction;
+
+      if (targetIdx < 0 || targetIdx >= items.length) return;
+
+      // Swap items
+      const temp = items[itemIdx];
+      items[itemIdx] = items[targetIdx];
+      items[targetIdx] = temp;
+
+      localStorage.setItem('jeju_itinerary_data', JSON.stringify(itineraryData));
+      renderDayItinerary(currentDayIndex);
+      showToast('已調整行程順序');
+    }
+
+    // --- HIGHLIGHT FORMATTER (Bold tags) ---
+    function formatHighlight(text) {
+      return text
+        .replace(/(必吃美食[:：]?)/g, '<strong class="text-terracotta font-bold">$1</strong>')
+        .replace(/(必點菜單[:：]?)/g, '<strong class="text-terracotta font-bold">$1</strong>')
+        .replace(/(必買伴手禮[:：]?)/g, '<strong class="text-mustard font-bold">$1</strong>')
+        .replace(/(重要預約代號[:：]?)/g, '<strong class="text-matcha font-bold">$1</strong>')
+        .replace(/(攻略秘訣[:：]?)/g, '<strong class="text-slateblue font-bold">$1</strong>');
+    }
+
+    function escapeQuotes(str) {
+      return str.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    }
+
+    function copyToClipboard(text) {
+      const tempInput = document.createElement('input');
+      tempInput.value = text;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+      
+      // Toast notice
+      showToast('已成功複製韓文地址！');
+    }
+
+    function showToast(msg) {
+      const toast = document.createElement('div');
+      toast.className = 'fixed top-16 left-1/2 transform -translate-x-1/2 z-50 bg-charcoal text-white text-xs px-4 py-2 rounded-full shadow-lg font-medium animate-bounce';
+      toast.innerText = msg;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 2000);
+    }
+
+    // --- TRIP INFO & EDITING ---
+    function renderTripInfo() {
+      ['flight', 'car', 'hotel', 'emergency'].forEach(key => {
+        const el = document.getElementById(`disp-${key}`);
+        if (el) {
+          el.innerHTML = tripInfoState[key].split('\n').map(line => `<div>${line}</div>`).join('');
+        }
+      });
+    }
+
+    function editSection(key) {
+      currentEditKey = key;
+      const titles = { flight: "編輯航班資訊", car: "編輯租車資訊", hotel: "編輯住宿資訊", emergency: "編輯緊急聯絡電話" };
+      document.getElementById('modal-info-title').innerText = titles[key] || "編輯資訊";
+      document.getElementById('modal-info-textarea').value = tripInfoState[key];
+      document.getElementById('modal-edit-info').classList.remove('hidden');
+    }
+
+    function saveInfoEdit() {
+      const val = document.getElementById('modal-info-textarea').value;
+      tripInfoState[currentEditKey] = val;
+      localStorage.setItem('jeju_trip_info', JSON.stringify(tripInfoState));
+      renderTripInfo();
+      closeModal('modal-edit-info');
+      showToast('資訊已更新！');
+    }
+
+    // --- EXPENSE TRACKER & EXCHANGE RATE ---
+    function updateExchangeRate() {
+      const val = Number(document.getElementById('custom-rate-input').value);
+      if (val && val > 0) {
+        exchangeRate = val;
+        localStorage.setItem('jeju_exchange_rate', exchangeRate);
+        renderExpenses();
+      }
+    }
+
+    function renderExpenses() {
+      const listEl = document.getElementById('expense-list');
+      let totalKRW = 0;
+
+      listEl.innerHTML = expensesState.map(exp => {
+        totalKRW += Number(exp.amount);
+        const hkd = (exp.amount / exchangeRate).toFixed(1);
+        return `
+          <div class="flex justify-between items-center bg-linen p-2.5 rounded-xl border border-softborder text-xs">
+            <div class="space-y-0.5">
+              <div class="font-bold text-charcoal flex items-center gap-1.5">
+                <span class="text-[10px] bg-sand px-1.5 py-0.5 rounded text-mutedgray">${exp.category}</span>
+                ${exp.name}
+              </div>
+              <div class="text-[10px] text-mutedgray">≈ HK$ ${hkd}</div>
+            </div>
+            <div class="flex items-center gap-3">
+              <span class="font-bold font-zen text-charcoal">₩ ${Number(exp.amount).toLocaleString()}</span>
+              <button onclick="deleteExpense(${exp.id})" class="text-mutedgray hover:text-red-500 text-xs"><i class="fa-regular fa-trash-can"></i></button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('total-krw').innerText = `₩ ${totalKRW.toLocaleString()}`;
+      document.getElementById('total-hkd').innerText = `HK$ ${(totalKRW / exchangeRate).toFixed(0)}`;
+    }
+
+    function openAddExpenseModal() {
+      document.getElementById('exp-name').value = '';
+      document.getElementById('exp-amount').value = '';
+      document.getElementById('modal-add-expense').classList.remove('hidden');
+    }
+
+    function saveExpense() {
+      const name = document.getElementById('exp-name').value.trim();
+      const amount = document.getElementById('exp-amount').value;
+      const category = document.getElementById('exp-cat').value;
+
+      if (!name || !amount) {
+        showToast('請填寫完整名稱與金額！');
+        return;
+      }
+
+      expensesState.push({
+        id: Date.now(),
+        name,
+        amount: Number(amount),
+        category
+      });
+
+      localStorage.setItem('jeju_expenses', JSON.stringify(expensesState));
+      renderExpenses();
+      closeModal('modal-add-expense');
+      showToast('已新增記帳紀錄！');
+    }
+
+    function deleteExpense(id) {
+      expensesState = expensesState.filter(e => e.id !== id);
+      localStorage.setItem('jeju_expenses', JSON.stringify(expensesState));
+      renderExpenses();
+      showToast('已刪除紀錄');
+    }
+
+    // --- TO BUY LIST LOGIC ---
+    function filterBuyList(filter) {
+      buyFilter = filter;
+      ['all', 'pending', 'done'].forEach(f => {
+        const btn = document.getElementById(`buy-filter-${f}`);
+        if (f === filter) {
+          btn.className = "px-3 py-1 rounded-full bg-charcoal text-white font-medium";
+        } else {
+          btn.className = "px-3 py-1 rounded-full bg-sand text-mutedgray";
+        }
+      });
+      renderBuyList();
+    }
+
+    function renderBuyList() {
+      const container = document.getElementById('tobuy-container');
+      let filtered = toBuyState;
+
+      if (buyFilter === 'pending') filtered = toBuyState.filter(i => !i.done);
+      else if (buyFilter === 'done') filtered = toBuyState.filter(i => i.done);
+
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="text-center text-xs text-mutedgray py-8">尚無項目</div>`;
+        return;
+      }
+
+      container.innerHTML = filtered.map(item => `
+        <div class="flex justify-between items-center bg-washi p-3 rounded-2xl border border-softborder text-xs transition-all ${item.done ? 'opacity-50 line-through bg-sand/30' : ''}">
+          <div class="flex items-center gap-3">
+            <button onclick="toggleBuyItem(${item.id})" class="text-base text-matcha">
+              <i class="${item.done ? 'fa-solid fa-circle-check' : 'fa-regular fa-circle'}"></i>
+            </button>
+            <div>
+              <div class="font-medium text-charcoal">${item.text}</div>
+              ${item.category ? `<span class="text-[10px] text-mutedgray bg-linen px-1.5 py-0.5 rounded border border-softborder/60">${item.category}</span>` : ''}
+            </div>
+          </div>
+          <button onclick="deleteBuyItem(${item.id})" class="text-mutedgray hover:text-red-500 text-xs px-2">
+            <i class="fa-regular fa-trash-can"></i>
+          </button>
+        </div>
+      `).join('');
+    }
+
+    function toggleBuyItem(id) {
+      toBuyState = toBuyState.map(i => i.id === id ? { ...i, done: !i.done } : i);
+      localStorage.setItem('jeju_tobuy', JSON.stringify(toBuyState));
+      renderBuyList();
+    }
+
+    function quickAddBuyItem() {
+      const input = document.getElementById('quick-buy-input');
+      const val = input.value.trim();
+      if (!val) return;
+
+      toBuyState.push({
+        id: Date.now(),
+        text: val,
+        category: "一般",
+        done: false
+      });
+
+      localStorage.setItem('jeju_tobuy', JSON.stringify(toBuyState));
+      input.value = '';
+      renderBuyList();
+      showToast('已新增至購物清單！');
+    }
+
+    function openAddBuyItemModal() {
+      quickAddBuyItem();
+    }
+
+    function deleteBuyItem(id) {
+      toBuyState = toBuyState.filter(i => i.id !== id);
+      localStorage.setItem('jeju_tobuy', JSON.stringify(toBuyState));
+      renderBuyList();
+      showToast('已刪除項目');
+    }
+
+    // --- MODAL UTILS ---
+    function closeModal(id) {
+      document.getElementById(id).classList.add('hidden');
+    }
+  </script>
+</body>
+</html>
