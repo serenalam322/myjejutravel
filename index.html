@@ -2,7 +2,6 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" href="icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>濟州首爾自駕隨行 Pocket Guide</title>
   <!-- Tailwind CSS -->
@@ -70,7 +69,6 @@
             terracottalight: '#FBF0EA',
             mustard: '#CFA052',
             mustardlight: '#FBF4E7',
-            slateblue: '#5B7B8D',
             slatebluelight: '#EDF3F7',
             softborder: '#E6E0D6'
           },
@@ -357,7 +355,7 @@
     </div>
   </div>
 
-  <!-- 3. Add/Edit Itinerary Modal (新增/編輯行程卡片 Modal - 擴充自訂地圖連結) -->
+  <!-- 3. Add/Edit Itinerary Modal -->
   <div id="modal-edit-itinerary" class="fixed inset-0 bg-black/40 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
     <div class="bg-washi w-full max-w-sm rounded-2xl p-5 border border-softborder shadow-2xl space-y-3 max-h-[90vh] overflow-y-auto hide-scrollbar">
       <h3 class="font-bold text-base text-charcoal border-b border-softborder pb-2" id="modal-itin-title">新增/編輯行程</h3>
@@ -468,7 +466,6 @@
         items: [
           {
             type: "交通",
-            time: "02:55 - 06:40",
             name: "香港 (HKG) ✈️ 濟州 (CJU)",
             nameEnKo: "HK Express UO676 (HKG T2 -> CJU)",
             addrKo: "제주특별자치도 제주시 공항로 2",
@@ -480,7 +477,6 @@
           },
           {
             type: "景點",
-            time: "07:30 - 11:30",
             name: "君悅酒店汗蒸幕 Grand Hyatt Korean Jjimjil Spa",
             nameEnKo: "그랜드 하얏트 제주 찜질 스파",
             addrKo: "제주특별자치도 제주시 노연로 12 6층",
@@ -492,7 +488,6 @@
           },
           {
             type: "餐廳",
-            time: "11:30 - 13:00",
             name: "新濟州海螺刀削麵 (신제주보말칼국수)",
             nameEnKo: "Shinjeju Bomal Kalguksu",
             addrKo: "제주 제주시 신대로 14길 17",
@@ -504,7 +499,6 @@
           },
           {
             type: "購物",
-            time: "13:30 - 14:30",
             name: "Mochiron モッチロン 達克瓦茲 (外帶)",
             nameEnKo: "Mochiron 모찌롱",
             addrKo: "제주 제주시 관덕로 6길 10 오른쪽매장",
@@ -516,7 +510,6 @@
           },
           {
             type: "餐廳",
-            time: "15:00 - 16:30",
             name: "Siso Kaymak & Aewol Caramel 涯月甜點",
             nameEnKo: "siso kaymak / 애월카라멜",
             addrKo: "제주 제주시 애월읍 애월해안로 566 1층",
@@ -528,7 +521,6 @@
           },
           {
             type: "景點",
-            time: "17:00 - 18:30",
             name: "Mumu Jeju 可愛小店 & 崖月邑日落 Cafe",
             nameEnKo: "무무제주 & Haejigae Cafe (해지개)",
             addrKo: "제주 제주시 애월읍 애월북서길 52",
@@ -540,7 +532,6 @@
           },
           {
             type: "住宿",
-            time: "19:00",
             name: "Airbnb 濟州獨棟民宿 (Yongsu-ri)",
             nameKo: "용수리 1480-2, Cheju, Jeju-do",
             addrKo: "제주특별자치도 제주시 한경면 용수리 1480-2",
@@ -561,7 +552,6 @@
         items: [
           {
             type: "景點",
-            time: "08:00 - 09:30",
             name: "城山日出峰 Seongsan Ilchulbong",
             nameEnKo: "성산일출봉",
             addrKo: "제주특별자치도 서귀포시 성산읍 일출로 284-12",
@@ -573,7 +563,6 @@
           },
           {
             type: "交通",
-            time: "10:00 - 10:30",
             name: "城山浦港碼頭 -> 搭船前往牛島 (Udo)",
             nameEnKo: "Seongsanpo Port Passenger Terminal",
             addrKo: "제주 서귀포시 성산읍 성산등용로 112-7",
@@ -585,7 +574,6 @@
           },
           {
             type: "景點",
-            time: "10:30 - 14:00",
             name: "牛島環島 (租電動單車 & UDO SAND 花生冰淇淋)",
             nameEnKo: "Udo Sand Peanut Ice Cream / 우도샌드",
             addrKo: "제주 제주시 우도면 우도해안길 788",
@@ -597,7 +585,6 @@
           },
           {
             type: "餐廳",
-            time: "14:00 - 15:30",
             name: "Udo Muldeuri 海女之家 / 牛島食堂",
             nameEnKo: "우도물드리 / 우도식당",
             addrKo: "제주 제주시 우도면 연평리 2427-1",
@@ -609,7 +596,6 @@
           },
           {
             type: "購物",
-            time: "15:30 - 16:30",
             name: "Jeju Gyuri 濟州橘子紀念品店",
             nameEnKo: "제주규리紀念品店",
             addrKo: "제주 제주시 우도면 우도해안길 792",
@@ -621,7 +607,6 @@
           },
           {
             type: "餐廳",
-            time: "17:30 - 19:00",
             name: "Sogeumbachi Sooninae 藍絲帶炒章魚 (소금바치 순이네)",
             nameKo: "소금바치 순이네",
             addrKo: "제주 제주시 구좌읍 해맞이해안로 2196",
@@ -633,7 +618,6 @@
           },
           {
             type: "住宿",
-            time: "19:30",
             name: "Stay RoA 獨棟Villa",
             nameEnKo: "Stay RoA",
             addrKo: "제주 서귀포시 대정읍 무릉전지로34번길 21",
@@ -654,7 +638,6 @@
         items: [
           {
             type: "景點",
-            time: "10:00 - 11:30",
             name: "Cafe Lupin (루핀) 海景咖啡廳",
             nameEnKo: "Cafe Lupin 루핀",
             addrKo: "제주 서귀포시 대정읍 형제해안로 272",
@@ -666,7 +649,6 @@
           },
           {
             type: "景點",
-            time: "12:00 - 14:00",
             name: "濟州堂 (제주당) 烘焙咖啡花園",
             nameEnKo: "Jejudang Cafe",
             addrKo: "제주 제주시 애월읍 월각로 927",
@@ -678,7 +660,6 @@
           },
           {
             type: "景點",
-            time: "14:30 - 16:30",
             name: "Dolcori Forest (돌코리숲) 森林步道",
             nameEnKo: "Dolcori Forest 돌코리숲",
             addrKo: "제주 서귀포시 안덕면 중산간서로 1878",
@@ -690,7 +671,6 @@
           },
           {
             type: "餐廳",
-            time: "17:30 - 19:30",
             name: "黑豚市白豚面 神話世界店 (흑돈시백돈면)",
             nameEnKo: "흑돈시백돈면 신화월드점",
             addrKo: "제주 서귀포시 안덕면 중산간서로 1769",
@@ -702,7 +682,6 @@
           },
           {
             type: "住宿",
-            time: "20:00",
             name: "濟州神話世界度假酒店 (Shinhwa World)",
             nameEnKo: "Jeju Shinhwa World Resort",
             addrKo: "제주 서귀포시 안덕면 신화역사로304번길 38",
@@ -723,7 +702,6 @@
         items: [
           {
             type: "餐廳",
-            time: "11:00 - 12:30",
             name: "麵酒幕 濟州本店 (면주막)",
             nameEnKo: "Myeonjumak Jeju Main Branch",
             addrKo: "제주특별자치도 제주시 조천읍 번영로 1143",
@@ -735,7 +713,6 @@
           },
           {
             type: "景點",
-            time: "13:00 - 15:00",
             name: "Ecoland 生態樂園 (에코랜드)",
             nameEnKo: "Ecoland Theme Park",
             addrKo: "제주 제주시 조천읍 번영로 1278-169",
@@ -747,7 +724,6 @@
           },
           {
             type: "景點",
-            time: "15:30 - 17:00",
             name: "吉卜力工作室展 in Jeju (스튜디오 지브리展)",
             nameEnKo: "Studio Ghibli Exhibition in Jeju",
             addrKo: "제주 제주시 구좌읍 비자림로 1191 (송당동화마을)",
@@ -759,7 +735,6 @@
           },
           {
             type: "購物",
-            time: "17:30 - 18:30",
             name: "Tote 濟州紀念品店 & Samsonite Outlet",
             nameEnKo: "Tote Souvenir Shop / Samsonite Factory",
             addrKo: "제주 제주시 중앙로13길 35 1층",
@@ -771,13 +746,12 @@
           },
           {
             type: "餐廳",
-            time: "19:00 - 20:30",
             name: "Unidam (우니담) 高級海膽料理",
             nameEnKo: "Unidam Aewol",
             addrKo: "제주 제주시 애월읍 고내로13길 107 2층",
             addrEn: "2F, 107 Gonae-ro 13-gil, Aewol-eup, Jeju-si",
             hours: "09:00 - 19:30 (午休 14:30-16:00)",
-            highlight: "必點菜單: 滿滿海膽蓋飯 (우니덮밥) 、海膽海帶湯、蒲燒鰻魚飯",
+            highlight: "必點菜單: 滿滿海膽蓋飯 (우니덮밥) 、海帶海膽湯、蒲燒鰻魚飯",
             guide: "涯月海景第一排名店！鋪滿黃金海膽的蓋飯極致奢華美味，海膽鮮甜無腥味。",
             badgeType: "orange"
           }
@@ -792,7 +766,6 @@
         items: [
           {
             type: "餐廳",
-            time: "10:00 - 11:30",
             name: "Noraba 海景海鮮拉麵店 (노라바)",
             nameEnKo: "Noraba Seafood Ramen",
             addrKo: "제주 제주시 애월읍 애월해안로 570-1",
@@ -804,7 +777,6 @@
           },
           {
             type: "交通",
-            time: "13:20 - 14:40",
             name: "濟州 (CJU) ✈️ 首爾金浦 (GMP)",
             nameEnKo: "Air Busan BX 8342 Economy",
             addrKo: "제주 제주시 공항로 2 -> 서울 강서구 하늘길 38",
@@ -816,7 +788,6 @@
           },
           {
             type: "住宿",
-            time: "16:00",
             name: "JUNIBINO HOTEL HONGDAE (弘大朱尼比諾酒店)",
             nameEnKo: "JUNIBINO HOTEL HONGDAE",
             addrKo: "서울특별시 마포구 양화로 8",
@@ -828,7 +799,6 @@
           },
           {
             type: "餐廳",
-            time: "19:00 - 20:30",
             name: "一心鰻魚 弘大總店 (Ilsim 일심장어)",
             nameEnKo: "Ilsim Eel Hongdae",
             addrKo: "서울특별시 마포구 동교동 198-31",
@@ -840,7 +810,6 @@
           },
           {
             type: "購物",
-            time: "21:00 - 22:30",
             name: "樂天超市 首爾站店 (Lotte Mart)",
             nameEnKo: "Lotte Mart Seoul Station",
             addrKo: "서울 중구 한강대로 405",
@@ -861,7 +830,6 @@
         items: [
           {
             type: "餐廳",
-            time: "11:30 - 13:00",
             name: "安木 聖水店 (안목 성수) 米其林豬肉湯飯",
             nameEnKo: "Anmok Seongsu Michelin Pork Soup",
             addrKo: "서울 성동구 뚝섬로13길 34 1층",
@@ -873,7 +841,6 @@
           },
           {
             type: "購物",
-            time: "13:30 - 16:30",
             name: "聖水洞商圈逛街 (Beidelli 服飾 & 自然島鹽可頌)",
             nameEnKo: "Beidelli Seongsu & Jayeondo Salt Bread",
             addrKo: "서울특별시 성동구 연무장길 103",
@@ -885,26 +852,24 @@
           },
           {
             type: "餐廳",
-            time: "17:30 - 19:30",
-            name: "陵洞水芹菜 聖水直營店 (능동미나리)",
+            name: "陵洞水芹菜 聖水直營店 (능동미나리 성수직영점)",
             nameEnKo: "Neungdong Minari Seongsu",
             addrKo: "서울 성동구 연무장길 42",
             addrEn: "42 Yeonmujang-gil, Seongdong-gu, Seoul",
-            hours: "10:00 - 23:00",
+            hours: "24小時營業",
             highlight: "必點菜單: 水芹牛骨牛肉湯飯 (₩15,000) & 水芹生牛肉拌飯 (₩15,000)",
-            guide: "鋪滿滿新鮮爽脆水芹菜 (Minari) 的牛骨湯飯與鮮美生牛肉拌飯，極具韓國代表性的清爽美食。",
+            guide: "超人氣排隊名店！清澈牛骨湯底鋪滿鮮嫩牛肉與清香水芹菜，生牛肉拌飯更是絕品。",
             badgeType: "orange"
           },
           {
             type: "餐廳",
-            time: "21:30 - 23:00",
-            name: "麻浦牛小腸城 (마포곱창타운) 宵夜",
-            nameEnKo: "Mapo Gopchang Town",
-            addrKo: "서울 마포구 월드컵북로4길 42",
-            addrEn: "42 World Cup buk-ro 4-gil, Mapo-gu, Seoul",
-            hours: "15:00 - 01:00",
-            highlight: "必吃美食: 烤牛小腸組合 (곱창모듬)",
-            guide: "弘大/麻浦在地人最愛的深夜燒烤牛小腸，搭配韭菜與韭菜炒飯超夠味！",
+            name: "宵夜: 麻浦牛小腸城 (마포곱창타운)",
+            nameEnKo: "Mapo Gopchang Town Hongdae",
+            addrKo: "서울 마포구 굵은산로 1",
+            addrEn: "1 World Cup buk-ro 5-gil, Mapo-gu, Seoul",
+            hours: "12:00 - 01:00",
+            highlight: "必吃美食: 炭烤韓牛乘腸/大腸與特製炒飯",
+            guide: "弘大在地人最愛的宵夜名店，牛小腸外酥內嫩、香氣十足。",
             badgeType: "orange"
           }
         ]
@@ -912,68 +877,52 @@
       {
         day: 7,
         date: "11/11 (三)",
-        title: "Day 7 梨泰院美容 · 益善洞與廣藏市場",
-        location: "首爾 梨泰院 / 鍾路",
-        weather: { temp: "10°C", desc: "晴間多雲", pop: "10%", feels: "9°C", icon: "fa-cloud-sun" },
+        title: "Day 7 梨泰院醫美 · 廣藏市場與東大門",
+        location: "首爾 市區",
+        weather: { temp: "10°C", desc: "晴時多雲", pop: "10%", feels: "9°C", icon: "fa-cloud-sun" },
         items: [
           {
             type: "景點",
-            time: "10:00 - 12:00",
-            name: "닥터올린 클리닉 (Dr. Olin Clinic 梨泰院)",
-            nameEnKo: "Dr. Olin Clinic Itaewon",
+            name: "Dr.Olean Clinic 닥터올린 클리닉 醫美診所",
+            nameEnKo: "Dr.Olean Clinic Itaewon",
             addrKo: "서울특별시 용산구 이태원로 179 해밀톤 쇼핑몰 1층 4호",
-            addrEn: "Room 4, 1F, Hamilton Shopping Mall, 179 Itaewon-ro",
-            hours: "重要預約時間: 10:00 AM (6號線 梨泰院站 1號出口)",
-            highlight: "重要預約代號: 닥터올린 10:00 AM Booking Verified",
-            guide: "位於漢密爾頓購物中心1樓，提供頂級韓系面板管理與醫美保養服務。",
-            badgeType: "green"
-          },
-          {
-            type: "景點",
-            time: "12:30 - 15:00",
-            name: "益善洞韓屋村 (Ikseon-dong)",
-            nameEnKo: "Ikseon-dong Hanok Village",
-            addrKo: "서울특별시 종로구 수표로28길 일대",
-            addrEn: "Ikseon-dong, Jongno-gu, Seoul",
-            hours: "全天開放",
-            highlight: "必看亮點: 古色古香韓屋文青巷弄、特色咖啡館",
-            guide: "保存完整的百年韓屋小巷，充滿復古咖啡廳、手作配件店與拍貼機。",
+            addrEn: "Room 4, 1F, Hamilton Shopping Mall, 179 Itaewon-ro, Yongsan-gu",
+            hours: "預約時間: 10:00 AM (6號線 梨泰院站 1號出口)",
+            highlight: "重要預約代號: 10:00 AM Booking Verified",
+            guide: "位在梨泰院 Hamilton 購物中心1樓，請準時到達辦理報到。",
             badgeType: "green"
           },
           {
             type: "餐廳",
-            time: "15:30 - 17:30",
-            name: "廣藏市場 (광장시장) 265號綠豆煎餅",
-            nameEnKo: "Gwangjang Market",
-            addrKo: "서울특별시 종로구 창경궁로 88",
+            name: "益善洞韓屋村 & 廣藏市場美食巡禮",
+            nameEnKo: "Gwangjang Market / Ikseon-dong",
+            addrKo: "서울 종로구 창경궁로 88",
             addrEn: "88 Changgyeonggung-ro, Jongno-gu, Seoul",
             hours: "09:00 - 23:00",
-            highlight: "必吃美食: 攤位 265號 現炸香脆綠豆煎餅 (녹두빈대떡) & 生牛肉麻油",
-            guide: "韓國傳統美食大本營！現磨現炸的綠豆煎餅外脆內軟，配上一碗馬格利米酒極享受。",
+            highlight: "必吃美食: 廣藏市場 265號 綠豆煎餅 & 麻藥飯捲、生牛肉",
+            guide: "感受傳統市場的熱鬧氣氛，現炸綠豆煎餅外酥內軟，沾上洋蔥醬油極其美味。",
             badgeType: "orange"
           },
           {
             type: "購物",
-            time: "18:00 - 20:00",
             name: "No Brand 東大門 Doota Mall 店",
-            nameEnKo: "No Brand Dongdaemun Doota",
-            addrKo: "서울 중구 장충단로 275 4층",
+            nameEnKo: "No Brand Dongdaemun Doota Mall 4F",
+            addrKo: "서울 중구 장충단로 275 4F",
             addrEn: "4F, 275 Jangchungdan-ro, Jung-gu, Seoul",
             hours: "10:30 - 22:00",
-            highlight: "必買伴手禮: No Brand 紫薯洋芋片、起司餅乾、優質零食",
-            guide: "Emart 旗下高 CP 值超市，採買零食伴手禮非常劃算。",
+            highlight: "必買伴手禮: No Brand 紫薯洋洋片、蛋黃派、高CP值零食",
+            guide: "E-Mart 旗下超高性價比超市，零食包裝精美且便宜美味。",
             badgeType: "gold"
           },
           {
             type: "餐廳",
-            time: "20:30 - 22:00",
-            name: "太初排骨 (태초갈비 弘大)",
+            name: "太初排骨 (태초갈비) 弘大總店",
             nameEnKo: "Taecho Galbi Hongdae",
             addrKo: "서울 마포구 어울마당로 122 2층",
             addrEn: "2F, 122 Eoulmadang-ro, Mapo-gu, Seoul",
-            hours: "12:00 - 23:00 (弘大9號出口)",
-            highlight: "必吃美食: 特製醬燒豬排骨 (돼지갈비)",
-            guide: "位於弘大熱鬧商圈，炭火烤醬醃排骨鹹甜入味，完美結束首爾最後一夜。",
+            hours: "12:00 - 23:00 (弘大站9號出口)",
+            highlight: "必吃美食: 祕製豬排骨 (돼지갈비) & 醬蟹",
+            guide: "專人桌邊代烤高檔韓式排骨，肉質醃漬入味甘甜。",
             badgeType: "orange"
           }
         ]
@@ -981,416 +930,289 @@
       {
         day: 8,
         date: "11/12 (四)",
-        title: "Day 8 仁川機場返港",
+        title: "Day 8 首爾仁川返航香港",
         location: "首爾 -> 香港",
-        weather: { temp: "9°C", desc: "微涼秋天", pop: "0%", feels: "8°C", icon: "fa-sun" },
+        weather: { temp: "9°C", desc: "微涼晴朗", pop: "0%", feels: "8°C", icon: "fa-sun" },
         items: [
           {
             type: "交通",
-            time: "11:30 - 13:00",
-            name: "弘大/飯店 -> 前往仁川國際機場 (ICN)",
-            nameEnKo: "AREX Express Train to ICN Terminal 1",
-            addrKo: "인천 중구 공항로 272 인천국제공항 1여객터미널",
-            addrEn: "Incheon International Airport T1",
-            hours: "建議提前3小時抵達機場",
-            highlight: "重要預約代號: AREX 直通列車 或 6002 號機場巴士",
-            guide: "整理行李退房後，搭乘 AREX 直通列車前往仁川機場 T1辦理登機與退稅手續。",
-            badgeType: "blue"
-          },
-          {
-            type: "交通",
-            time: "15:45 - 18:50",
-            name: "首爾仁川 (ICN) ✈️ 香港 (HKG)",
+            name: "首爾 (ICN T1) ✈️ 香港 (HKG T1)",
             nameEnKo: "HK Express UO631 (ICN T1 -> HKG T1)",
-            addrKo: "인천국제공항 제1여객터미널",
-            addrEn: "Incheon Airport T1",
-            hours: "航班時間: 15:45 - 18:50 (約3.5小時)",
-            highlight: "重要預約代號: UO631 Fare Class U (客運大樓1)",
-            guide: "滿載濟州與首爾的美好回憶，平安返回香港！",
+            addrKo: "인천 중구 공항로 272 인천국제공항 제1여객터미널",
+            addrEn: "Incheon International Airport Terminal 1",
+            hours: "航班時間: 15:45 - 18:50",
+            highlight: "重要預約代號: UO631 隨心飛 (Fare Class: U)",
+            guide: "建議於 12:45 前抵達仁川機場第一航廈辦理登機與行李託運，並完成免稅退稅手續。",
             badgeType: "blue"
           }
         ]
       }
     ];
 
-    // --- 2. DEFAULT EDITABLE INFO DATA ---
-    const defaultTripInfo = {
-      flight: `✈️ 去程: HK Express UO676
-・日期: 2026-11-05 (四) 02:55 HKG T2 -> 06:40 CJU
-・艙等: 隨心飛 (Fare Class U)
-
-✈️ 韓國內陸線: Air Busan BX8342
-・日期: 2026-11-09 (一) 13:20 CJU -> 14:40 GMP
-・訂位代號: KF8ZBI
-
-✈️ 回程: HK Express UO631
-・日期: 2026-11-12 (四) 15:45 ICN T1 -> 18:50 HKG T1`,
-
-      car: `🚗 租車公司: Jeju Angel Rent Car (제주엔젤카)
-・取車時間: 2026-11-05 08:00
-・還車時間: 2026-11-09 18:00 (預計提前11:30還車)
-・總店地址: 171-1, Doryeong-ro, Jeju-si (제주시 도령로 171-1)
-
-🚌 接駁車指南:
-・地點: 濟州機場 1樓 Exit Gate #5 出口，過馬路至租車停車場「Area 5, No. 14」
-・班次: 每 20-30 分鐘一班 (首班車 07:40 AM)
-・換班時間: 11:00-12:00 / 17:00-18:00 (每30分一班)`,
-
-      hotel: `🏠 濟州 Day 1: Airbnb 獨棟民宿
-・地址: 용수리 1480-2, Cheju, Jeju-do
-・Check-in: 16:00 / Check-out: 11:00
-
-🏠 濟州 Day 2: Stay RoA
-・地址: 21 Mureungjeonji-ro 34beon-gil, Daejeong-eup, Seogwipo
-・Check-in: 16:00 / Check-out: 11:00
-
-🏠 濟州 Day 3-4: 濟州神話世界度假酒店 (Shinhwa World)
-・地址: 38 Sinhwayeoksa-ro 304beon-gil, Andeok-myeon, Seogwipo
-
-🏠 首爾 Day 5-8: JUNIBINO HOTEL HONGDAE
-・地址: 서울특별시 마포구 양화로 8 (弘大/合井)
-・Check-in: 15:00 / Check-out: 11:00`,
-
-      emergency: `🚨 韓國旅遊諮詢與翻譯專線: 1330 (中文/英文/韓文)
-🚨 韓國緊急報警: 112 / 消防救護: 119
-🚨 香港入境處24小時求助熱線: +852 1868
-🚨 中國駐韓國大使館領事保護: +82-2-755-0570
-🚨 濟州 Angel Car 租車客服: +82-64-744-1100`
-    };
-
-    // --- 3. INITIAL TO-BUY LIST ---
-    const initialBuyList = [
-      { id: 1, text: "Mochiron 達克瓦茲 (巧克力/紅豆奶油/花生)", category: "濟州伴手禮", done: false },
-      { id: 2, text: "UDO SAND 牛島花生夾心餅 & 冰淇淋", category: "濟州伴手禮", done: false },
-      { id: 3, text: "Siso Kaymak 濃厚奶油卷", category: "美食", done: false },
-      { id: 4, text: "Aewol Caramel 手工焦糖糖果", category: "濟州伴手禮", done: false },
-      { id: 5, text: "Beidelli 韓系服飾 (聖水店)", category: "服飾", done: false },
-      { id: 6, text: "自然島鹽可頌 (聖水店)", category: "美食", done: false },
-      { id: 7, text: "No Brand 紫薯洋芋片 & 韓國泡麵", category: "超市零食", done: false },
-      { id: 8, text: "Olive Young 護膚面膜與彩妝", category: "美妝", done: false }
-    ];
-
-    // --- STATE MANAGEMENT & LOCAL STORAGE ---
-    let currentDayIndex = 0;
-    let currentEditKey = '';
-    let buyFilter = 'all';
-
+    // 本地持久化資料讀取
     let itineraryData = JSON.parse(localStorage.getItem('jeju_itinerary_data')) || defaultItineraryData;
-    let tripInfoState = JSON.parse(localStorage.getItem('jeju_trip_info')) || defaultTripInfo;
-    let expensesState = JSON.parse(localStorage.getItem('jeju_expenses')) || [
-      { id: 1, name: "君悅汗蒸幕門票", amount: 30000, category: "景點" },
-      { id: 2, name: "城山浦港牛島來回船票", amount: 11000, category: "交通" },
-      { id: 3, name: "吉卜力展覽門票", amount: 22000, category: "景點" }
-    ];
-    let toBuyState = JSON.parse(localStorage.getItem('jeju_tobuy')) || initialBuyList;
-    let exchangeRate = Number(localStorage.getItem('jeju_exchange_rate')) || 172; // 預設 1 HKD = 172 KRW
+    let customExchangeRate = parseFloat(localStorage.getItem('jeju_custom_rate')) || 172;
 
-    // --- APP INITIALIZATION ---
-    window.onload = function() {
+    let currentDay = 1;
+    let expenses = JSON.parse(localStorage.getItem('jeju_expenses')) || [
+      { id: 1, name: "UO676 機票", amount: 280000, cat: "交通" },
+      { id: 2, name: "新濟州海螺刀削麵", amount: 22000, cat: "餐飲" },
+      { id: 3, name: "Mochiron 達克瓦茲", amount: 15000, cat: "購物" }
+    ];
+    let buyList = JSON.parse(localStorage.getItem('jeju_buylist')) || [
+      { id: 1, name: "Mochiron 達克瓦茲", done: false },
+      { id: 2, name: "Siso Kaymak 奶油", done: true },
+      { id: 3, name: "Beidelli 韓系服飾", done: false },
+      { id: 4, name: "No Brand 紫薯片", done: false }
+    ];
+
+    let infoFlight = localStorage.getItem('jeju_info_flight') || `香港 (HKG) ✈️ 濟州 (CJU)
+日期: 2026-11-05 (周四) 02:55 - 06:40 | UO676 | 客運大樓 2
+
+濟州 (CJU) ✈️ 首爾金浦 (GMP)
+日期: 2026-11-09 (周一) 13:20 - 14:40 | Air Busan BX 8342 | 編號: KF8ZBI
+
+首爾仁川 (ICN) ✈️ 香港 (HKG)
+日期: 2026-11-12 (周四) 15:45 - 18:50 | UO631 | 客運大樓 1`;
+
+    let infoCar = localStorage.getItem('jeju_info_car') || `Jeju Angel Car Rent
+取車: 2026-11-05 08:00 AM
+還車: 2026-11-09 18:00 PM
+接駁車: 機場 1樓 Exit Gate #5 -> 跨過馬路至 Area 5, No.14 搭乘
+車程: 每20分鐘一班 (離峰/換班時間每30分鐘: 11:00-12:00, 17:00-18:00)`;
+
+    let infoHotel = localStorage.getItem('jeju_info_hotel') || `1. Airbnb 濟州獨棟民宿
+地址: 용수리 1480-2, Cheju, Jeju-do
+入住: 11/05 16:00 | 退房: 11/06 11:00
+
+2. Stay RoA
+地址: 21 Mureungjeonji-ro 34beon-gil, Seogwipo-si
+入住: 11/06 16:00 | 退房: 11/07 11:00
+
+3. 濟州神話世界 Resort
+入住: 11/07 16:00 | 退房: 11/09 11:00
+
+4. JUNIBINO HOTEL HONGDAE
+地址: 首爾特別市麻浦區東橋洞 198-31
+入住: 11/09 15:00 | 退房: 11/12 11:00`;
+
+    let infoEmergency = localStorage.getItem('jeju_info_emergency') || `韓國緊急救助/報警: 112
+火災/急救: 119
+外國人旅遊諮詢熱線: 1330 (提供中英日服務)
+香港駐首爾經濟貿易辦事處: +82-2-6280-4500`;
+
+    // --- 2. CORE RENDER FUNCTIONS ---
+    function initApp() {
+      // 設定自訂匯率顯示
+      const rateInput = document.getElementById('custom-rate-input');
+      if (rateInput) rateInput.value = customExchangeRate;
+
       renderDayPills();
-      renderDayItinerary(0);
+      renderItinerary();
       renderTripInfo();
       renderExpenses();
       renderBuyList();
-      document.getElementById('custom-rate-input').value = exchangeRate;
-
-      // 註冊 Service Worker 進行離線快取支援
-      registerServiceWorker();
-    };
-
-    // --- SERVICE WORKER REGISTRATION ---
-    function registerServiceWorker() {
-      if ('serviceWorker' in navigator) {
-        // 使用 Blob 技術在單一 HTML 檔案內建立並註冊動態 Service Worker
-        const swCode = `
-          const CACHE_NAME = 'jeju-guide-v1';
-          const urlsToCache = [
-            './',
-            'https://cdn.tailwindcss.com',
-            'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
-          ];
-
-          self.addEventListener('install', event => {
-            event.waitUntil(
-              caches.open(CACHE_NAME).then(cache => {
-                return cache.addAll(urlsToCache).catch(err => console.log('SW cache partial fail', err));
-              })
-            );
-            self.skipWaiting();
-          });
-
-          self.addEventListener('activate', event => {
-            event.waitUntil(
-              caches.keys().then(cacheNames => {
-                return Promise.all(
-                  cacheNames.map(cache => {
-                    if (cache !== CACHE_NAME) {
-                      return caches.delete(cache);
-                    }
-                  })
-                );
-              })
-            );
-            self.clients.claim();
-          });
-
-          self.addEventListener('fetch', event => {
-            event.respondWith(
-              caches.match(event.request).then(response => {
-                if (response) {
-                  return response;
-                }
-                return fetch(event.request).then(fetchRes => {
-                  if (!fetchRes || fetchRes.status !== 200 || fetchRes.type !== 'basic') {
-                    return fetchRes;
-                  }
-                  const responseToCache = fetchRes.clone();
-                  caches.open(CACHE_NAME).then(cache => {
-                    cache.put(event.request, responseToCache);
-                  });
-                  return fetchRes;
-                }).catch(() => {
-                  // 離線備援處置
-                  return response;
-                });
-              })
-            );
-          });
-        `;
-
-        const blob = new Blob([swCode], { type: 'text/javascript' });
-        const swUrl = URL.createObjectURL(blob);
-
-        navigator.serviceWorker.register(swUrl)
-          .then(reg => {
-            console.log('Service Worker 註冊成功:', reg.scope);
-          })
-          .catch(err => {
-            console.warn('Service Worker 註冊跳過或受限:', err);
-          });
-      }
     }
 
-    // --- TAB SWITCHING ---
-    function switchTab(tab) {
-      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
-      document.getElementById(`tab-${tab}`).classList.remove('hidden');
-
-      // Update Nav Buttons
-      ['itinerary', 'info', 'expense', 'buy'].forEach(t => {
-        const btn = document.getElementById(`nav-${t}`);
-        if (btn) {
-          if (t === tab) {
-            btn.className = "flex flex-col items-center gap-1 text-xs tab-active transition-all";
-          } else {
-            btn.className = "flex flex-col items-center gap-1 text-xs text-mutedgray transition-all";
-          }
-        }
-      });
-
-      // Update Header Title based on Tab
-      const headerTitle = document.getElementById('header-title');
-      if (tab === 'itinerary') headerTitle.innerText = "濟州自駕遊";
-      else if (tab === 'info') headerTitle.innerText = "旅程隨身資訊";
-      else if (tab === 'expense') headerTitle.innerText = "旅程記帳本";
-      else if (tab === 'buy') headerTitle.innerText = "必買與願望清單";
-
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+    // 保存行程資料
+    function saveItineraryData() {
+      localStorage.setItem('jeju_itinerary_data', JSON.stringify(itineraryData));
     }
 
-    // --- DAY PILLS & ITINERARY RENDERING ---
+    // 渲染 Day Pills
     function renderDayPills() {
       const container = document.getElementById('day-pills');
-      container.innerHTML = itineraryData.map((d, idx) => `
-        <button onclick="changeDay(${idx})" class="flex-shrink-0 px-3.5 py-1.5 rounded-xl text-xs font-medium transition-all ${idx === currentDayIndex ? 'bg-matcha text-white shadow-md font-bold' : 'bg-washi text-mutedgray border border-softborder hover:bg-sand'}">
-          D${d.day} <span class="text-[10px] opacity-90">${d.date.split(' ')[0]}</span>
+      container.innerHTML = itineraryData.map(d => `
+        <button onclick="selectDay(${d.day})" class="px-3.5 py-1.5 rounded-full text-xs font-zen font-medium whitespace-nowrap transition-all duration-200 border ${d.day === currentDay ? 'bg-matcha text-white border-matcha shadow-sm' : 'bg-washi text-mutedgray border-softborder hover:border-matcha/50'}">
+          D${d.day} <span class="text-[10px] opacity-80">${d.date.split(' ')[0]}</span>
         </button>
       `).join('');
     }
 
-    function changeDay(index) {
-      currentDayIndex = index;
+    // 切換 Day
+    function selectDay(dayNum) {
+      currentDay = dayNum;
       renderDayPills();
-      renderDayItinerary(index);
+      renderItinerary();
     }
 
-    function renderDayItinerary(index) {
-      const data = itineraryData[index];
+    // 渲染行程卡片 (已移除時間範圍標籤)
+    function renderItinerary() {
+      const dayObj = itineraryData.find(d => d.day === currentDay);
+      if (!dayObj) return;
 
-      // Update Weather Pill
-      document.getElementById('weather-temp').innerText = data.weather.temp;
-      document.getElementById('weather-desc').innerText = data.weather.desc;
-      document.getElementById('weather-pop').innerText = data.weather.pop;
-      document.getElementById('weather-feels').innerText = data.weather.feels;
-      document.getElementById('weather-location').innerHTML = `<i class="fa-solid fa-location-dot text-[10px] text-terracotta"></i> ${data.location}`;
-      document.getElementById('weather-icon-container').innerHTML = `<i class="fa-solid ${data.weather.icon} animate-pulse"></i>`;
+      document.getElementById('day-title').innerHTML = `<i class="fa-solid fa-calendar-day text-matcha"></i> ${dayObj.title}`;
+      document.getElementById('day-sub-location').innerText = dayObj.location;
 
-      // Update Day Header
-      document.getElementById('day-title').innerHTML = `<i class="fa-regular fa-calendar-check text-matcha"></i> ${data.title}`;
-      document.getElementById('day-sub-location').innerText = data.location;
-
-      // Render Cards
-      const cardsContainer = document.getElementById('cards-container');
-      if (!data.items || data.items.length === 0) {
-        cardsContainer.innerHTML = `<div class="text-center text-xs text-mutedgray py-12 bg-washi rounded-2xl border border-softborder">本日暫無行程安排，點擊右上角「新增行程」吧！</div>`;
-        return;
+      // 更新 Header 天氣
+      if (dayObj.weather) {
+        document.getElementById('weather-temp').innerText = dayObj.weather.temp;
+        document.getElementById('weather-desc').innerText = dayObj.weather.desc;
+        document.getElementById('weather-location').innerHTML = `<i class="fa-solid fa-location-dot text-[10px] text-terracotta"></i> ${dayObj.location}`;
+        document.getElementById('weather-pop').innerText = dayObj.weather.pop;
+        document.getElementById('weather-feels').innerText = dayObj.weather.feels;
+        document.getElementById('weather-icon-container').innerHTML = `<i class="fa-solid ${dayObj.weather.icon} animate-pulse"></i>`;
       }
 
-      cardsContainer.innerHTML = data.items.map((item, itemIdx) => {
+      const container = document.getElementById('cards-container');
+      const badgeStyles = {
+        green: 'bg-matchalight text-matcha border-matcha/20',
+        orange: 'bg-terracottalight text-terracotta border-terracotta/20',
+        gold: 'bg-mustardlight text-mustard border-mustard/20',
+        blue: 'bg-slatebluelight text-slateblue border-slateblue/20',
+        slate: 'bg-sand text-charcoal border-softborder'
+      };
 
-        // Badge Styling
-        let badgeStyle = "bg-matchalight text-matcha border-matcha/30";
-        if (item.badgeType === "orange") badgeStyle = "bg-terracottalight text-terracotta border-terracotta/30";
-        else if (item.badgeType === "gold") badgeStyle = "bg-mustardlight text-mustard border-mustard/30";
-        else if (item.badgeType === "blue") badgeStyle = "bg-slatebluelight text-slateblue border-slateblue/30";
-        else if (item.badgeType === "slate") badgeStyle = "bg-sand text-charcoal border-softborder";
-
-        // Navigation Search Queries / Custom URLs
-        const searchNavQuery = encodeURIComponent(`${item.name} ${item.addrKo || ''}`);
-        const googleMapUrl = item.customGoogleUrl || `https://www.google.com/maps/search/?api=1&query=${searchNavQuery}`;
-        const naverMapUrl = item.customNaverUrl || `https://map.naver.com/v5/search/${searchNavQuery}`;
+      container.innerHTML = dayObj.items.map((item, idx) => {
+        const bStyle = badgeStyles[item.badgeType] || badgeStyles.green;
+        
+        // 生成 Google Map 導航網址 (優先選用自訂連結)
+        const googleUrl = item.customGoogleUrl && item.customGoogleUrl.trim() !== '' 
+          ? item.customGoogleUrl 
+          : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(item.name + ' ' + item.addrKo)}`;
+        
+        // 生成 Naver Map 導航網址 (優先選用自訂連結)
+        const naverUrl = item.customNaverUrl && item.customNaverUrl.trim() !== '' 
+          ? item.customNaverUrl 
+          : `https://map.naver.com/v5/search/${encodeURIComponent(item.addrKo || item.name)}`;
 
         return `
-          <div class="bg-washi border border-softborder rounded-2xl p-4 shadow-sm hover:shadow-md transition-all space-y-3 relative group">
-            
-            <!-- Card Header & Management Tools (Edit / Move / Delete) -->
-            <div class="flex justify-between items-start gap-2">
-              <div class="space-y-1 flex-1">
-                <div class="flex items-center gap-2 flex-wrap">
-                  <span class="text-[11px] font-bold px-2 py-0.5 rounded-md border ${badgeStyle}">${item.type}</span>
-                  ${item.time ? `<span class="text-xs text-mutedgray font-medium"><i class="fa-regular fa-clock text-[10px]"></i> ${item.time}</span>` : ''}
-                </div>
-                <h3 class="text-base font-bold font-zen text-charcoal leading-snug">${item.name}</h3>
-                ${item.nameEnKo ? `<p class="text-xs text-mutedgray/90 font-mono">${item.nameEnKo}</p>` : ''}
-              </div>
-
-              <!-- Quick Action Buttons: Move Up, Move Down, Edit, Delete -->
-              <div class="flex items-center gap-1.5 text-xs bg-linen p-1 rounded-xl border border-softborder shrink-0">
-                <button onclick="moveItineraryCard(${itemIdx}, -1)" class="w-6 h-6 flex items-center justify-center text-mutedgray hover:text-charcoal hover:bg-sand rounded-lg transition-colors" title="上移">
-                  <i class="fa-solid fa-arrow-up text-[11px]"></i>
+          <div class="bg-washi border border-softborder rounded-2xl p-4 shadow-sm relative transition-all hover:shadow-md space-y-2.5">
+            <!-- Card Header: Type Badge & Action Controls (Up, Down, Edit, Delete) -->
+            <div class="flex justify-between items-center">
+              <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full border ${bStyle}">
+                ${item.type}
+              </span>
+              
+              <div class="flex items-center space-x-1 text-mutedgray">
+                <button onclick="moveItineraryItem(${idx}, -1)" class="w-6 h-6 rounded-full bg-sand hover:bg-matchalight hover:text-matcha flex items-center justify-center text-[10px] border border-softborder transition-all" title="向上調動">
+                  <i class="fa-solid fa-arrow-up"></i>
                 </button>
-                <button onclick="moveItineraryCard(${itemIdx}, 1)" class="w-6 h-6 flex items-center justify-center text-mutedgray hover:text-charcoal hover:bg-sand rounded-lg transition-colors" title="下移">
-                  <i class="fa-solid fa-arrow-down text-[11px]"></i>
+                <button onclick="moveItineraryItem(${idx}, 1)" class="w-6 h-6 rounded-full bg-sand hover:bg-matchalight hover:text-matcha flex items-center justify-center text-[10px] border border-softborder transition-all" title="向下調動">
+                  <i class="fa-solid fa-arrow-down"></i>
                 </button>
-                <div class="w-[1px] h-3 bg-softborder"></div>
-                <button onclick="openEditItineraryModal(${itemIdx})" class="w-6 h-6 flex items-center justify-center text-matcha hover:bg-matchalight rounded-lg transition-colors" title="編輯">
-                  <i class="fa-solid fa-pen text-[11px]"></i>
+                <button onclick="openEditItineraryModal(${idx})" class="w-6 h-6 rounded-full bg-sand hover:bg-matchalight hover:text-matcha flex items-center justify-center text-[10px] border border-softborder transition-all" title="編輯卡片">
+                  <i class="fa-solid fa-pen"></i>
                 </button>
-                <button onclick="deleteItineraryCard(${itemIdx})" class="w-6 h-6 flex items-center justify-center text-mutedgray hover:text-red-500 hover:bg-red-50 rounded-lg transition-colors" title="刪除">
-                  <i class="fa-regular fa-trash-can text-[11px]"></i>
+                <button onclick="deleteItineraryItem(${idx})" class="w-6 h-6 rounded-full bg-sand hover:bg-terracottalight hover:text-terracotta flex items-center justify-center text-[10px] border border-softborder transition-all" title="刪除卡片">
+                  <i class="fa-solid fa-trash"></i>
                 </button>
               </div>
             </div>
 
-            <!-- Operating Hours & Highlight Tag -->
-            ${item.hours ? `
-              <div class="text-[11px] text-mutedgray flex items-center gap-1.5 bg-linen px-2.5 py-1 rounded-lg border border-softborder/60">
-                <i class="fa-solid fa-store text-matcha"></i>
-                <span>${item.hours}</span>
-              </div>
-            ` : ''}
+            <!-- Title & EN/KO Subtitle -->
+            <div>
+              <h3 class="text-sm font-bold text-charcoal font-zen leading-snug">${item.name}</h3>
+              ${item.nameEnKo ? `<p class="text-[11px] text-mutedgray font-mono">${item.nameEnKo}</p>` : ''}
+            </div>
 
+            <!-- Addresses & Hours -->
+            <div class="space-y-1 text-xs text-charcoal/90 bg-sand/40 p-2.5 rounded-xl border border-softborder/60">
+              ${item.addrKo ? `
+                <div class="flex items-start justify-between gap-2">
+                  <div class="flex items-start gap-1.5 flex-1">
+                    <i class="fa-solid fa-location-dot text-terracotta mt-0.5 text-[11px]"></i>
+                    <span class="font-mono text-[11px] select-all">${item.addrKo}</span>
+                  </div>
+                  <button onclick="copyToClipboard('${item.addrKo}')" class="text-[10px] text-matcha hover:underline whitespace-nowrap bg-washi px-1.5 py-0.5 rounded border border-softborder">
+                    <i class="fa-regular fa-copy"></i> 複製
+                  </button>
+                </div>
+              ` : ''}
+              ${item.addrEn ? `
+                <div class="flex items-center gap-1.5 text-mutedgray text-[11px]">
+                  <i class="fa-solid fa-globe text-[10px]"></i>
+                  <span>${item.addrEn}</span>
+                </div>
+              ` : ''}
+              ${item.hours ? `
+                <div class="flex items-center gap-1.5 text-mutedgray text-[11px] pt-0.5 border-t border-softborder/40">
+                  <i class="fa-regular fa-clock text-[10px]"></i>
+                  <span>${item.hours}</span>
+                </div>
+              ` : ''}
+            </div>
+
+            <!-- Highlight Tag -->
             ${item.highlight ? `
-              <div class="bg-terracottalight/70 border border-terracotta/20 text-terracotta text-xs p-2.5 rounded-xl font-medium space-y-0.5">
-                <div class="flex items-center gap-1 font-bold">
-                  <i class="fa-solid fa-star text-[10px]"></i> 導遊手札 / 亮點
-                </div>
-                <div>${formatHighlight(item.highlight)}</div>
+              <div class="text-xs bg-mustardlight border border-mustard/20 text-charcoal p-2 rounded-xl flex items-start gap-1.5">
+                <i class="fa-solid fa-star text-mustard text-[11px] mt-0.5"></i>
+                <div class="font-medium">${item.highlight}</div>
               </div>
             ` : ''}
 
-            <!-- Story / Extra Insights -->
+            <!-- Guide Handnote -->
             ${item.guide ? `
-              <div class="text-xs text-charcoal/90 bg-sand/40 p-3 rounded-xl border border-softborder/60 leading-relaxed">
-                <span class="font-semibold text-matcha font-zen">💡 景點故事與攻略：</span>${item.guide}
-              </div>
+              <p class="text-xs text-mutedgray leading-relaxed pl-2 border-l-2 border-matcha/40 italic">
+                "${item.guide}"
+              </p>
             ` : ''}
 
-            <!-- Address & Copy Button -->
-            ${(item.addrKo || item.addrEn) ? `
-              <div class="bg-linen p-2.5 rounded-xl border border-softborder/80 space-y-1 text-[11px]">
-                <div class="flex justify-between items-center">
-                  <span class="text-mutedgray font-medium">地址 (Address)</span>
-                  ${item.addrKo ? `
-                    <button onclick="copyToClipboard('${escapeQuotes(item.addrKo)}')" class="text-matcha hover:underline flex items-center gap-1 font-medium">
-                      <i class="fa-regular fa-copy"></i> 複製韓文地址
-                    </button>
-                  ` : ''}
-                </div>
-                ${item.addrKo ? `<div class="text-charcoal font-mono select-all">${item.addrKo}</div>` : ''}
-                ${item.addrEn ? `<div class="text-mutedgray font-mono text-[10px] truncate">${item.addrEn}</div>` : ''}
-              </div>
-            ` : ''}
-
-            <!-- Navigation Buttons (支援自訂連結與動態連結) -->
+            <!-- Dual Navigation Buttons -->
             <div class="grid grid-cols-2 gap-2 pt-1">
-              <a href="${googleMapUrl}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-1.5 bg-linen hover:bg-sand text-charcoal border border-softborder py-2 px-3 rounded-xl text-xs font-medium transition-colors">
-                <i class="fa-map-location-dot text-red-500"></i> Google Map
+              <a href="${googleUrl}" target="_blank" class="flex items-center justify-center gap-1.5 bg-sand hover:bg-softborder text-charcoal text-xs py-1.5 rounded-xl border border-softborder transition-all">
+                <i class="fa-custom fa-google text-blue-600 font-bold">G</i>
+                <span>Google Map</span>
               </a>
-              <a href="${naverMapUrl}" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-1.5 bg-matchalight hover:bg-matchalight/80 text-matcha border border-matcha/30 py-2 px-3 rounded-xl text-xs font-medium transition-colors">
-                <i class="fa-solid fa-location-arrow text-matcha"></i> Naver Map 導航
+              <a href="${naverUrl}" target="_blank" class="flex items-center justify-center gap-1.5 bg-matchalight hover:bg-matcha hover:text-white text-matcha text-xs py-1.5 rounded-xl border border-matcha/30 transition-all font-medium">
+                <i class="fa-solid fa-map-location-dot"></i>
+                <span>Naver Map</span>
               </a>
             </div>
-
           </div>
         `;
       }).join('');
     }
 
-    // --- ITINERARY CARD CRUD & REORDER LOGIC ---
+    // --- 行程 CRUD 與調動 Logic ---
     function openAddItineraryModal() {
-      document.getElementById('modal-itin-title').innerText = `新增 D${itineraryData[currentDayIndex].day} 行程`;
-      document.getElementById('itin-item-index').value = "-1";
-      document.getElementById('itin-type').value = "景點";
-      document.getElementById('itin-badge-type').value = "green";
-      document.getElementById('itin-time').value = "";
-      document.getElementById('itin-name').value = "";
-      document.getElementById('itin-name-enko').value = "";
-      document.getElementById('itin-addr-ko').value = "";
-      document.getElementById('itin-addr-en').value = "";
-      document.getElementById('itin-custom-google-url').value = "";
-      document.getElementById('itin-custom-naver-url').value = "";
-      document.getElementById('itin-hours').value = "";
-      document.getElementById('itin-highlight').value = "";
-      document.getElementById('itin-guide').value = "";
-
+      document.getElementById('modal-itin-title').innerText = '新增行程卡片';
+      document.getElementById('itin-item-index').value = '-1';
+      document.getElementById('itin-type').value = '景點';
+      document.getElementById('itin-badge-type').value = 'green';
+      document.getElementById('itin-name').value = '';
+      document.getElementById('itin-name-enko').value = '';
+      document.getElementById('itin-addr-ko').value = '';
+      document.getElementById('itin-addr-en').value = '';
+      document.getElementById('itin-custom-google-url').value = '';
+      document.getElementById('itin-custom-naver-url').value = '';
+      document.getElementById('itin-hours').value = '';
+      document.getElementById('itin-highlight').value = '';
+      document.getElementById('itin-guide').value = '';
       document.getElementById('modal-edit-itinerary').classList.remove('hidden');
     }
 
-    function openEditItineraryModal(itemIdx) {
-      const item = itineraryData[currentDayIndex].items[itemIdx];
-      document.getElementById('modal-itin-title').innerText = "編輯行程卡片";
-      document.getElementById('itin-item-index').value = itemIdx;
-      document.getElementById('itin-type').value = item.type || "景點";
-      document.getElementById('itin-badge-type').value = item.badgeType || "green";
-      document.getElementById('itin-time').value = item.time || "";
-      document.getElementById('itin-name').value = item.name || "";
-      document.getElementById('itin-name-enko').value = item.nameEnKo || "";
-      document.getElementById('itin-addr-ko').value = item.addrKo || "";
-      document.getElementById('itin-addr-en').value = item.addrEn || "";
-      document.getElementById('itin-custom-google-url').value = item.customGoogleUrl || "";
-      document.getElementById('itin-custom-naver-url').value = item.customNaverUrl || "";
-      document.getElementById('itin-hours').value = item.hours || "";
-      document.getElementById('itin-highlight').value = item.highlight || "";
-      document.getElementById('itin-guide').value = item.guide || "";
+    function openEditItineraryModal(idx) {
+      const dayObj = itineraryData.find(d => d.day === currentDay);
+      if (!dayObj || !dayObj.items[idx]) return;
+      const item = dayObj.items[idx];
+
+      document.getElementById('modal-itin-title').innerText = '編輯行程卡片';
+      document.getElementById('itin-item-index').value = idx;
+      document.getElementById('itin-type').value = item.type || '景點';
+      document.getElementById('itin-badge-type').value = item.badgeType || 'green';
+      document.getElementById('itin-name').value = item.name || '';
+      document.getElementById('itin-name-enko').value = item.nameEnKo || '';
+      document.getElementById('itin-addr-ko').value = item.addrKo || '';
+      document.getElementById('itin-addr-en').value = item.addrEn || '';
+      document.getElementById('itin-custom-google-url').value = item.customGoogleUrl || '';
+      document.getElementById('itin-custom-naver-url').value = item.customNaverUrl || '';
+      document.getElementById('itin-hours').value = item.hours || '';
+      document.getElementById('itin-highlight').value = item.highlight || '';
+      document.getElementById('itin-guide').value = item.guide || '';
 
       document.getElementById('modal-edit-itinerary').classList.remove('hidden');
     }
 
     function saveItineraryCard() {
-      const itemIdx = parseInt(document.getElementById('itin-item-index').value);
-      const name = document.getElementById('itin-name').value.trim();
+      const idx = parseInt(document.getElementById('itin-item-index').value);
+      const dayObj = itineraryData.find(d => d.day === currentDay);
+      if (!dayObj) return;
 
-      if (!name) {
-        showToast('請至少輸入行程名稱！');
-        return;
-      }
-
-      const cardData = {
+      const newItem = {
         type: document.getElementById('itin-type').value,
         badgeType: document.getElementById('itin-badge-type').value,
-        time: document.getElementById('itin-time').value.trim(),
-        name: name,
+        name: document.getElementById('itin-name').value.trim() || '新行程',
         nameEnKo: document.getElementById('itin-name-enko').value.trim(),
         addrKo: document.getElementById('itin-addr-ko').value.trim(),
         addrEn: document.getElementById('itin-addr-en').value.trim(),
@@ -1401,141 +1223,108 @@
         guide: document.getElementById('itin-guide').value.trim()
       };
 
-      if (itemIdx === -1) {
-        // Add new card
-        itineraryData[currentDayIndex].items.push(cardData);
-        showToast('已新增行程！');
+      if (idx === -1) {
+        dayObj.items.push(newItem);
       } else {
-        // Update existing card
-        itineraryData[currentDayIndex].items[itemIdx] = cardData;
-        showToast('已更新行程！');
+        dayObj.items[idx] = newItem;
       }
 
-      localStorage.setItem('jeju_itinerary_data', JSON.stringify(itineraryData));
-      renderDayItinerary(currentDayIndex);
+      saveItineraryData();
       closeModal('modal-edit-itinerary');
+      renderItinerary();
     }
 
-    function deleteItineraryCard(itemIdx) {
-      itineraryData[currentDayIndex].items.splice(itemIdx, 1);
-      localStorage.setItem('jeju_itinerary_data', JSON.stringify(itineraryData));
-      renderDayItinerary(currentDayIndex);
-      showToast('已刪除行程');
+    function deleteItineraryItem(idx) {
+      if (!confirm("確定要刪除這項行程卡片嗎？")) return;
+      const dayObj = itineraryData.find(d => d.day === currentDay);
+      if (!dayObj) return;
+      dayObj.items.splice(idx, 1);
+      saveItineraryData();
+      renderItinerary();
     }
 
-    function moveItineraryCard(itemIdx, direction) {
-      const items = itineraryData[currentDayIndex].items;
-      const targetIdx = itemIdx + direction;
+    function moveItineraryItem(idx, direction) {
+      const dayObj = itineraryData.find(d => d.day === currentDay);
+      if (!dayObj) return;
+      const newIdx = idx + direction;
+      if (newIdx < 0 || newIdx >= dayObj.items.length) return;
 
-      if (targetIdx < 0 || targetIdx >= items.length) return;
+      const temp = dayObj.items[idx];
+      dayObj.items[idx] = dayObj.items[newIdx];
+      dayObj.items[newIdx] = temp;
 
-      // Swap items
-      const temp = items[itemIdx];
-      items[itemIdx] = items[targetIdx];
-      items[targetIdx] = temp;
-
-      localStorage.setItem('jeju_itinerary_data', JSON.stringify(itineraryData));
-      renderDayItinerary(currentDayIndex);
-      showToast('已調整行程順序');
+      saveItineraryData();
+      renderItinerary();
     }
 
-    // --- HIGHLIGHT FORMATTER (Bold tags) ---
-    function formatHighlight(text) {
-      return text
-        .replace(/(必吃美食[:：]?)/g, '<strong class="text-terracotta font-bold">$1</strong>')
-        .replace(/(必點菜單[:：]?)/g, '<strong class="text-terracotta font-bold">$1</strong>')
-        .replace(/(必買伴手禮[:：]?)/g, '<strong class="text-mustard font-bold">$1</strong>')
-        .replace(/(重要預約代號[:：]?)/g, '<strong class="text-matcha font-bold">$1</strong>')
-        .replace(/(攻略秘訣[:：]?)/g, '<strong class="text-slateblue font-bold">$1</strong>');
-    }
-
-    function escapeQuotes(str) {
-      return str.replace(/'/g, "\\'").replace(/"/g, '&quot;');
-    }
-
-    function copyToClipboard(text) {
-      const tempInput = document.createElement('input');
-      tempInput.value = text;
-      document.body.appendChild(tempInput);
-      tempInput.select();
-      document.execCommand('copy');
-      document.body.removeChild(tempInput);
-      
-      // Toast notice
-      showToast('已成功複製韓文地址！');
-    }
-
-    function showToast(msg) {
-      const toast = document.createElement('div');
-      toast.className = 'fixed top-16 left-1/2 transform -translate-x-1/2 z-50 bg-charcoal text-white text-xs px-4 py-2 rounded-full shadow-lg font-medium animate-bounce';
-      toast.innerText = msg;
-      document.body.appendChild(toast);
-      setTimeout(() => toast.remove(), 2000);
-    }
-
-    // --- TRIP INFO & EDITING ---
+    // --- 3. TRIP INFO LOGIC ---
     function renderTripInfo() {
-      ['flight', 'car', 'hotel', 'emergency'].forEach(key => {
-        const el = document.getElementById(`disp-${key}`);
-        if (el) {
-          el.innerHTML = tripInfoState[key].split('\n').map(line => `<div>${line}</div>`).join('');
-        }
-      });
+      document.getElementById('disp-flight').innerText = infoFlight;
+      document.getElementById('disp-car').innerText = infoCar;
+      document.getElementById('disp-hotel').innerText = infoHotel;
+      document.getElementById('disp-emergency').innerText = infoEmergency;
     }
 
-    function editSection(key) {
-      currentEditKey = key;
-      const titles = { flight: "編輯航班資訊", car: "編輯租車資訊", hotel: "編輯住宿資訊", emergency: "編輯緊急聯絡電話" };
-      document.getElementById('modal-info-title').innerText = titles[key] || "編輯資訊";
-      document.getElementById('modal-info-textarea').value = tripInfoState[key];
+    let activeEditType = '';
+    function editSection(type) {
+      activeEditType = type;
+      const titleMap = { flight: '編輯航班資訊', car: '編輯租車資訊', hotel: '編輯住宿資訊', emergency: '編輯緊急聯絡電話' };
+      const valMap = { flight: infoFlight, car: infoCar, hotel: infoHotel, emergency: infoEmergency };
+      
+      document.getElementById('modal-info-title').innerText = titleMap[type];
+      document.getElementById('modal-info-textarea').value = valMap[type];
       document.getElementById('modal-edit-info').classList.remove('hidden');
     }
 
     function saveInfoEdit() {
       const val = document.getElementById('modal-info-textarea').value;
-      tripInfoState[currentEditKey] = val;
-      localStorage.setItem('jeju_trip_info', JSON.stringify(tripInfoState));
-      renderTripInfo();
+      if (activeEditType === 'flight') { infoFlight = val; localStorage.setItem('jeju_info_flight', val); }
+      if (activeEditType === 'car') { infoCar = val; localStorage.setItem('jeju_info_car', val); }
+      if (activeEditType === 'hotel') { infoHotel = val; localStorage.setItem('jeju_info_hotel', val); }
+      if (activeEditType === 'emergency') { infoEmergency = val; localStorage.setItem('jeju_info_emergency', val); }
+      
       closeModal('modal-edit-info');
-      showToast('資訊已更新！');
+      renderTripInfo();
     }
 
-    // --- EXPENSE TRACKER & EXCHANGE RATE ---
+    // --- 4. EXPENSE TRACKER LOGIC (支援自訂匯率) ---
     function updateExchangeRate() {
-      const val = Number(document.getElementById('custom-rate-input').value);
+      const val = parseFloat(document.getElementById('custom-rate-input').value);
       if (val && val > 0) {
-        exchangeRate = val;
-        localStorage.setItem('jeju_exchange_rate', exchangeRate);
+        customExchangeRate = val;
+        localStorage.setItem('jeju_custom_rate', val);
         renderExpenses();
       }
     }
 
     function renderExpenses() {
-      const listEl = document.getElementById('expense-list');
+      const container = document.getElementById('expense-list');
       let totalKRW = 0;
 
-      listEl.innerHTML = expensesState.map(exp => {
-        totalKRW += Number(exp.amount);
-        const hkd = (exp.amount / exchangeRate).toFixed(1);
+      container.innerHTML = expenses.map(exp => {
+        totalKRW += exp.amount;
+        const hkd = Math.round(exp.amount / customExchangeRate);
         return `
-          <div class="flex justify-between items-center bg-linen p-2.5 rounded-xl border border-softborder text-xs">
-            <div class="space-y-0.5">
-              <div class="font-bold text-charcoal flex items-center gap-1.5">
-                <span class="text-[10px] bg-sand px-1.5 py-0.5 rounded text-mutedgray">${exp.category}</span>
-                ${exp.name}
-              </div>
-              <div class="text-[10px] text-mutedgray">≈ HK$ ${hkd}</div>
+          <div class="flex justify-between items-center bg-sand/40 p-2.5 rounded-xl border border-softborder text-xs">
+            <div class="flex items-center gap-2">
+              <span class="text-matcha font-bold">[${exp.cat}]</span>
+              <span class="font-medium text-charcoal">${exp.name}</span>
             </div>
-            <div class="flex items-center gap-3">
-              <span class="font-bold font-zen text-charcoal">₩ ${Number(exp.amount).toLocaleString()}</span>
-              <button onclick="deleteExpense(${exp.id})" class="text-mutedgray hover:text-red-500 text-xs"><i class="fa-regular fa-trash-can"></i></button>
+            <div class="flex items-center gap-2">
+              <div class="text-right">
+                <div class="font-bold font-zen text-charcoal">₩ ${exp.amount.toLocaleString()}</div>
+                <div class="text-[10px] text-mutedgray">HK$ ${hkd.toLocaleString()}</div>
+              </div>
+              <button onclick="deleteExpense(${exp.id})" class="text-mutedgray hover:text-terracotta ml-1">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
             </div>
           </div>
         `;
       }).join('');
 
       document.getElementById('total-krw').innerText = `₩ ${totalKRW.toLocaleString()}`;
-      document.getElementById('total-hkd').innerText = `HK$ ${(totalKRW / exchangeRate).toFixed(0)}`;
+      document.getElementById('total-hkd').innerText = `HK$ ${Math.round(totalKRW / customExchangeRate).toLocaleString()}`;
     }
 
     function openAddExpenseModal() {
@@ -1546,117 +1335,110 @@
 
     function saveExpense() {
       const name = document.getElementById('exp-name').value.trim();
-      const amount = document.getElementById('exp-amount').value;
-      const category = document.getElementById('exp-cat').value;
+      const amount = parseFloat(document.getElementById('exp-amount').value);
+      const cat = document.getElementById('exp-cat').value;
 
-      if (!name || !amount) {
-        showToast('請填寫完整名稱與金額！');
-        return;
-      }
+      if (!name || isNaN(amount)) return alert('請輸入有效的名稱與金額');
 
-      expensesState.push({
-        id: Date.now(),
-        name,
-        amount: Number(amount),
-        category
-      });
-
-      localStorage.setItem('jeju_expenses', JSON.stringify(expensesState));
-      renderExpenses();
+      expenses.unshift({ id: Date.now(), name, amount, cat });
+      localStorage.setItem('jeju_expenses', JSON.stringify(expenses));
       closeModal('modal-add-expense');
-      showToast('已新增記帳紀錄！');
+      renderExpenses();
     }
 
     function deleteExpense(id) {
-      expensesState = expensesState.filter(e => e.id !== id);
-      localStorage.setItem('jeju_expenses', JSON.stringify(expensesState));
+      expenses = expenses.filter(e => e.id !== id);
+      localStorage.setItem('jeju_expenses', JSON.stringify(expenses));
       renderExpenses();
-      showToast('已刪除紀錄');
     }
 
-    // --- TO BUY LIST LOGIC ---
-    function filterBuyList(filter) {
-      buyFilter = filter;
-      ['all', 'pending', 'done'].forEach(f => {
-        const btn = document.getElementById(`buy-filter-${f}`);
-        if (f === filter) {
-          btn.className = "px-3 py-1 rounded-full bg-charcoal text-white font-medium";
-        } else {
-          btn.className = "px-3 py-1 rounded-full bg-sand text-mutedgray";
-        }
-      });
-      renderBuyList();
-    }
-
+    // --- 5. TO BUY LIST LOGIC ---
+    let buyFilter = 'all';
     function renderBuyList() {
       const container = document.getElementById('tobuy-container');
-      let filtered = toBuyState;
-
-      if (buyFilter === 'pending') filtered = toBuyState.filter(i => !i.done);
-      else if (buyFilter === 'done') filtered = toBuyState.filter(i => i.done);
-
-      if (filtered.length === 0) {
-        container.innerHTML = `<div class="text-center text-xs text-mutedgray py-8">尚無項目</div>`;
-        return;
-      }
+      const filtered = buyList.filter(i => {
+        if (buyFilter === 'pending') return !i.done;
+        if (buyFilter === 'done') return i.done;
+        return true;
+      });
 
       container.innerHTML = filtered.map(item => `
-        <div class="flex justify-between items-center bg-washi p-3 rounded-2xl border border-softborder text-xs transition-all ${item.done ? 'opacity-50 line-through bg-sand/30' : ''}">
-          <div class="flex items-center gap-3">
-            <button onclick="toggleBuyItem(${item.id})" class="text-base text-matcha">
-              <i class="${item.done ? 'fa-solid fa-circle-check' : 'fa-regular fa-circle'}"></i>
-            </button>
-            <div>
-              <div class="font-medium text-charcoal">${item.text}</div>
-              ${item.category ? `<span class="text-[10px] text-mutedgray bg-linen px-1.5 py-0.5 rounded border border-softborder/60">${item.category}</span>` : ''}
-            </div>
+        <div class="flex justify-between items-center bg-washi p-3 rounded-xl border border-softborder text-xs">
+          <div class="flex items-center gap-2.5">
+            <input type="checkbox" ${item.done ? 'checked' : ''} onchange="toggleBuyItem(${item.id})" class="w-4 h-4 accent-matcha rounded">
+            <span class="${item.done ? 'line-through text-mutedgray' : 'font-medium text-charcoal'}">${item.name}</span>
           </div>
-          <button onclick="deleteBuyItem(${item.id})" class="text-mutedgray hover:text-red-500 text-xs px-2">
+          <button onclick="deleteBuyItem(${item.id})" class="text-mutedgray hover:text-terracotta">
             <i class="fa-regular fa-trash-can"></i>
           </button>
         </div>
       `).join('');
     }
 
-    function toggleBuyItem(id) {
-      toBuyState = toBuyState.map(i => i.id === id ? { ...i, done: !i.done } : i);
-      localStorage.setItem('jeju_tobuy', JSON.stringify(toBuyState));
-      renderBuyList();
-    }
-
     function quickAddBuyItem() {
       const input = document.getElementById('quick-buy-input');
       const val = input.value.trim();
       if (!val) return;
-
-      toBuyState.push({
-        id: Date.now(),
-        text: val,
-        category: "一般",
-        done: false
-      });
-
-      localStorage.setItem('jeju_tobuy', JSON.stringify(toBuyState));
+      buyList.unshift({ id: Date.now(), name: val, done: false });
+      localStorage.setItem('jeju_buylist', JSON.stringify(buyList));
       input.value = '';
       renderBuyList();
-      showToast('已新增至購物清單！');
     }
 
-    function openAddBuyItemModal() {
-      quickAddBuyItem();
+    function toggleBuyItem(id) {
+      const item = buyList.find(i => i.id === id);
+      if (item) item.done = !item.done;
+      localStorage.setItem('jeju_buylist', JSON.stringify(buyList));
+      renderBuyList();
     }
 
     function deleteBuyItem(id) {
-      toBuyState = toBuyState.filter(i => i.id !== id);
-      localStorage.setItem('jeju_tobuy', JSON.stringify(toBuyState));
+      buyList = buyList.filter(i => i.id !== id);
+      localStorage.setItem('jeju_buylist', JSON.stringify(buyList));
       renderBuyList();
-      showToast('已刪除項目');
     }
 
-    // --- MODAL UTILS ---
+    function filterBuyList(status) {
+      buyFilter = status;
+      ['all', 'pending', 'done'].forEach(s => {
+        const btn = document.getElementById(`buy-filter-${s}`);
+        if (s === status) {
+          btn.className = 'px-3 py-1 rounded-full bg-charcoal text-white font-medium';
+        } else {
+          btn.className = 'px-3 py-1 rounded-full bg-sand text-mutedgray';
+        }
+      });
+      renderBuyList();
+    }
+
+    // --- GENERAL UTILS ---
+    function switchTab(tab) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('nav button').forEach(el => {
+        el.classList.remove('tab-active');
+        el.classList.add('text-mutedgray');
+      });
+
+      document.getElementById(`tab-${tab}`).classList.remove('hidden');
+      const navBtn = document.getElementById(`nav-${tab}`);
+      if (navBtn) {
+        navBtn.classList.add('tab-active');
+        navBtn.classList.remove('text-mutedgray');
+      }
+    }
+
     function closeModal(id) {
       document.getElementById(id).classList.add('hidden');
     }
+
+    function copyToClipboard(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        alert('已成功複製韓文地址：\n' + text);
+      });
+    }
+
+    // 頁面初次載入啟動
+    window.onload = initApp;
   </script>
 </body>
 </html>
